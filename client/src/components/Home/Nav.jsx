@@ -1,9 +1,17 @@
 // components/HeaderNav.jsx
-import React, { useEffect, useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import React, { useEffect, useState, useRef } from "react";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { MoreHorizontal, X, Phone } from "lucide-react";
+import { MoreHorizontal, X, Phone, ChevronDown, ChevronRight } from "lucide-react";
 import GlassButton from "./GlassButton";
+
+// Example services submenu
+const servicesLinks = [
+  { to: "/services/limo", label: "Limousine Service", id: "limo" },
+  { to: "/services/airport", label: "Airport Transfer", id: "airport" },
+  { to: "/services/corporate", label: "Corporate Travel", id: "corporate" },
+  { to: "/services/wedding", label: "Wedding Service", id: "wedding" },
+];
 
 function useScrollDirection({ threshold = 10 } = {}) {
   const [dir, setDir] = useState("up");
@@ -17,21 +25,15 @@ function useScrollDirection({ threshold = 10 } = {}) {
     const onScroll = () => {
       const y = window.scrollY;
       const delta = y - lastY;
-      
-      // Only update if we've scrolled past the threshold
       if (Math.abs(delta) >= threshold) {
         setDir(delta > 0 ? "down" : "up");
         lastY = y;
       }
-      
       setIsScrolling(true);
-      
-      // Clear existing timeout and set new one
       clearTimeout(scrollTimeout);
       scrollTimeout = setTimeout(() => {
         setIsScrolling(false);
       }, 150);
-      
       ticking = false;
     };
 
@@ -43,7 +45,7 @@ function useScrollDirection({ threshold = 10 } = {}) {
     };
 
     window.addEventListener("scroll", handler, { passive: true });
-    
+
     return () => {
       window.removeEventListener("scroll", handler);
       clearTimeout(scrollTimeout);
@@ -57,7 +59,11 @@ const navLinks = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About US" },
   { to: "/fleet", label: "Fleet" },
-  { to: "/services", label: "Out Services" },
+  { 
+    to: "/services", 
+    label: "Our Services", 
+    submenu: servicesLinks 
+  },
   { to: "/contact", label: "Contact Us" },
 ];
 
@@ -66,6 +72,14 @@ export default function HeaderNav() {
   const { dir, isScrolling } = useScrollDirection({ threshold: 10 });
   const { pathname } = useLocation();
   const [scrollY, setScrollY] = useState(0);
+
+  // For desktop services dropdown
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const servicesTimeout = useRef(null);
+  const servicesRef = useRef(null);
+
+  // For mobile services dropdown
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
   useEffect(() => {
     // Track scroll position
@@ -77,10 +91,23 @@ export default function HeaderNav() {
   useEffect(() => {
     // close drawer on route change
     setOpen(false);
+    setMobileServicesOpen(false);
   }, [pathname]);
 
-  // Determine if header should be hidden
-  const shouldHide = dir === "down" && scrollY > 100; // Only hide after scrolling down 100px
+  // Hide header logic
+  const shouldHide = dir === "down" && scrollY > 100;
+
+  // Close desktop dropdown on click outside
+  useEffect(() => {
+    if (!servicesOpen) return;
+    function handleClick(e) {
+      if (servicesRef.current && !servicesRef.current.contains(e.target)) {
+        setServicesOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, [servicesOpen]);
 
   return (
     <>
@@ -95,7 +122,7 @@ export default function HeaderNav() {
           duration: 0.3, 
           ease: [0.25, 0.46, 0.45, 0.94]
         }}
-        className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur border-b border-gray-200 shadow-sm"
+        className="fixed top-0 left-0 right-0 z-50 bg-white/95 max-w-[90%] mx-auto backdrop-blur border-b border-gray-200 shadow-sm"
       >
         <div className="max-w-6xl mx-auto flex items-center justify-between py-3 px-4">
           {/* Logo */}
@@ -129,20 +156,95 @@ export default function HeaderNav() {
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-3">
-            {navLinks.map((item) => (
-              <NavLink
-                key={item.to}
-                to={item.to}
-                className={({ isActive }) =>
-                  "px-3 py-2 rounded-md text-[16px] capitalize font-medium transition " +
-                  (isActive
-                    ? "bg-black text-white"
-                    : "text-gray-700 hover:text-black")
-                }
-              >
-                {item.label}
-              </NavLink>
-            ))}
+            {navLinks.map((item) => {
+              if (!item.submenu) {
+                return (
+                  <NavLink
+                    key={item.to}
+                    to={item.to}
+                    className={({ isActive }) =>
+                      "px-3 py-2 rounded-md text-[16px] capitalize font-medium transition " +
+                      (isActive
+                        ? "bg-black text-white"
+                        : "text-gray-700 hover:text-black")
+                    }
+                  >
+                    {item.label}
+                  </NavLink>
+                );
+              }
+              // Services dropdown
+              return (
+                <div
+                  key={item.to}
+                  className="relative"
+                  ref={servicesRef}
+                  onMouseEnter={() => {
+                    clearTimeout(servicesTimeout.current);
+                    setServicesOpen(true);
+                  }}
+                  onMouseLeave={() => {
+                    servicesTimeout.current = setTimeout(() => setServicesOpen(false), 120);
+                  }}
+                >
+                  <button
+                    className={
+                      "px-3 py-2 rounded-md text-[16px] capitalize font-medium transition flex items-center gap-1 " +
+                      (pathname.startsWith("/services")
+                        ? "bg-black text-white"
+                        : "text-gray-700 hover:text-black")
+                    }
+                    aria-haspopup="true"
+                    aria-expanded={servicesOpen}
+                    type="button"
+                  >
+                    {item.label}
+                    <ChevronDown
+                      size={18}
+                      className={
+                        "transition-transform duration-200 " +
+                        (servicesOpen ? "rotate-180" : "")
+                      }
+                    />
+                  </button>
+                  <AnimatePresence>
+                    {servicesOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        transition={{ duration: 0.18 }}
+                        className="absolute left-0 top-full mt-2 min-w-[210px] bg-white border border-gray-200 rounded-lg shadow-lg z-50"
+                        onMouseEnter={() => {
+                          clearTimeout(servicesTimeout.current);
+                          setServicesOpen(true);
+                        }}
+                        onMouseLeave={() => {
+                          servicesTimeout.current = setTimeout(() => setServicesOpen(false), 120);
+                        }}
+                      >
+                        {item.submenu.map((sub) => (
+                          <NavLink
+                            key={sub.id}
+                            to={sub.to}
+                            className={({ isActive }) =>
+                              "flex items-center gap-2 px-4 py-2 rounded-md text-[15px] font-normal transition " +
+                              (isActive
+                                ? "bg-black text-white"
+                                : "text-gray-800 hover:bg-gray-100")
+                            }
+                            onClick={() => setServicesOpen(false)}
+                          >
+                            <ChevronRight size={16} className="opacity-60" />
+                            {sub.label}
+                          </NavLink>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
 
             {/* CTA Button */}
             <GlassButton as="a" href="#booking" className="ml-2">
@@ -208,21 +310,82 @@ export default function HeaderNav() {
 
               <div className="px-3 py-3">
                 {navLinks.map((item) => {
-                  const active = pathname === item.to;
+                  const active = pathname === item.to || (item.submenu && pathname.startsWith("/services"));
+                  if (!item.submenu) {
+                    return (
+                      <Link
+                        key={item.to}
+                        to={item.to}
+                        className={
+                          "block px-3 py-3 rounded-lg text-base font-medium mb-1 transition " +
+                          (active
+                            ? "bg-black text-white"
+                            : "text-gray-800 hover:bg-gray-100")
+                        }
+                        onClick={() => setOpen(false)}
+                      >
+                        {item.label}
+                      </Link>
+                    );
+                  }
+                  // Mobile: services dropdown
                   return (
-                    <Link
-                      key={item.to}
-                      to={item.to}
-                      className={
-                        "block px-3 py-3 rounded-lg text-base font-medium mb-1 transition " +
-                        (active
-                          ? "bg-black text-white"
-                          : "text-gray-800 hover:bg-gray-100")
-                      }
-                      onClick={() => setOpen(false)}
-                    >
-                      {item.label}
-                    </Link>
+                    <div key={item.to} className="mb-1">
+                      <button
+                        className={
+                          "w-full flex items-center justify-between px-3 py-3 rounded-lg text-base font-medium transition " +
+                          (active
+                            ? "bg-black text-white"
+                            : "text-gray-800 hover:bg-gray-100")
+                        }
+                        onClick={() => setMobileServicesOpen((v) => !v)}
+                        aria-haspopup="true"
+                        aria-expanded={mobileServicesOpen}
+                        type="button"
+                      >
+                        <span className="flex items-center gap-2">
+                          {item.label}
+                          <ChevronDown
+                            size={18}
+                            className={
+                              "transition-transform duration-200 " +
+                              (mobileServicesOpen ? "rotate-180" : "")
+                            }
+                          />
+                        </span>
+                      </button>
+                      <AnimatePresence>
+                        {mobileServicesOpen && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 8 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: 8 }}
+                            transition={{ duration: 0.18 }}
+                            className="pl-4"
+                          >
+                            {item.submenu.map((sub) => (
+                              <Link
+                                key={sub.id}
+                                to={sub.to}
+                                className={
+                                  "flex items-center gap-2 px-3 py-2 rounded-md text-[15px] font-normal transition " +
+                                  (pathname === sub.to
+                                    ? "bg-black text-white"
+                                    : "text-gray-800 hover:bg-gray-100")
+                                }
+                                onClick={() => {
+                                  setOpen(false);
+                                  setMobileServicesOpen(false);
+                                }}
+                              >
+                                <ChevronRight size={15} className="opacity-60" />
+                                {sub.label}
+                              </Link>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
                   );
                 })}
 
@@ -244,10 +407,6 @@ export default function HeaderNav() {
           </>
         )}
       </AnimatePresence>
-
-      {/* Debug info (remove in production) */}
-      
-     
     </>
   );
 }
