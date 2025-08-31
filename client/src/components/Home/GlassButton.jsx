@@ -22,7 +22,7 @@ export default function GlassButton({
       "md:px-6 md:py-3 md:text-lg " + // medium screens
       "lg:px-6 lg:py-3 lg:text-lg " + // large screens
       "font-normal transition " +
-      "border border-neutral-200 bg-black backdrop-blur shadow-sm hover:shadow " +
+      "border border-neutral-200 bg-black w-max backdrop-blur shadow-sm hover:shadow " +
       "text-white group " +
       className,
     style: { WebkitTapHighlightColor: "transparent", ...(props.style || {}) },

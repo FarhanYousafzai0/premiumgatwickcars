@@ -6,7 +6,7 @@ import About from "./pages/About";
 import Fleet from "./pages/Fleet";
 import Contact from "./pages/Contact";
 import Nav from "./components/Home/Nav";
-import Footer from "./components/Home/Footer";
+import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
 
 // Pages
