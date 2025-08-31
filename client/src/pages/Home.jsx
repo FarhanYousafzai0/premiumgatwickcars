@@ -10,6 +10,7 @@ const Home = () => {
      <div className='h-screen w-screen relative'>
 
      <Hero/>
+    <WhyChoseUs/>
      </div>
     </>
   )

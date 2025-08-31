@@ -1,6 +1,7 @@
 // components/GlassButton.jsx
 import React from "react";
 
+
 export default function GlassButton({
   as = "button",
   href,
@@ -16,13 +17,32 @@ export default function GlassButton({
       href={as === "a" ? href : undefined}
       className={
         "relative inline-flex items-center justify-center overflow-hidden " +
-        "rounded-xl px-5 py-2.5 font-medium transition " +
-        "border border-black/10 bg-white/70 backdrop-blur shadow-sm hover:shadow " +
-        "text-black group " +
+        "rounded-xl px-5 py-2.5 font-normal transition  " +
+        "border border-neutral-200 bg-black  backdrop-blur shadow-sm hover:shadow " +
+        "text-white group " +
         className
       }
+      style={{ WebkitTapHighlightColor: "transparent" }}
     >
-      {/* Shine sweep */}
+      {/* Gooey effect overlay */}
+      <span
+        className="pointer-events-none absolute left-0 top-0 w-full h-full z-0"
+        style={{}}
+      >
+        <span
+          className={
+            "absolute left-0 w-full h-full rounded-xl " +
+            "bg-white/60 blur-[6px] opacity-70 " +
+            "transition-transform duration-500 ease-in-out " +
+            "transform translate-y-full group-hover:translate-y-0"
+          }
+          style={{
+            transitionProperty: "transform, opacity",
+            willChange: "transform, opacity",
+          }}
+        />
+      </span>
+      {/* Shine sweep (optional, keep for extra effect) */}
       <span
         className={
           "pointer-events-none absolute inset-0 " +
@@ -33,6 +53,15 @@ export default function GlassButton({
         }
       />
       <span className="relative z-10">{children}</span>
+      {/* Add a filter for gooey effect if desired */}
+      <style>{`
+        .group:hover .group-gooey {
+          transform: translateY(0);
+        }
+        .group .group-gooey {
+          transform: translateY(100%);
+        }
+      `}</style>
     </Comp>
   );
 }

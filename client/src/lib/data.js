@@ -32,3 +32,26 @@ export const data = [
       deco: "support",
     },
   ];
+
+
+
+
+  export const services = [
+
+
+    {
+        title: "Easy Booking",
+        des: "Simple and easy steps to book your ride securely and reliably.",
+        icon: Car,
+    },
+    {
+        title: "Unbeatable Rates",
+        des: "Enjoy competitive, transparent pricing with no hidden fees. Get the best value for your journey every time.",
+        icon: CreditCard,
+    },
+    {
+        title: "24/7 Availability",
+        des: "Book and travel any time, day or night. Our service is available around the clock to fit your schedule.",
+        icon: Headphones,
+    }
+  ]
