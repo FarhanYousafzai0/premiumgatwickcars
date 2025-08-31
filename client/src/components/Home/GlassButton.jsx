@@ -1,29 +1,35 @@
 // components/GlassButton.jsx
 import React from "react";
-
+import { Link } from "react-router-dom";
 
 export default function GlassButton({
   as = "button",
-  href,
+  to,
   className = "",
   children,
   ...props
 }) {
-  const Comp = as === "a" ? "a" : "button";
+  let Comp;
+  let compProps = {
+    ...props,
+    className:
+      "relative inline-flex items-center justify-center overflow-hidden " +
+      "rounded-xl px-5 py-2.5 font-normal transition  " +
+      "border border-neutral-200 bg-black  backdrop-blur shadow-sm hover:shadow " +
+      "text-white group " +
+      className,
+    style: { WebkitTapHighlightColor: "transparent", ...(props.style || {}) },
+  };
+
+  if (as === "a" && to) {
+    Comp = Link;
+    compProps.to = to;
+  } else {
+    Comp = "button";
+  }
 
   return (
-    <Comp
-      {...props}
-      href={as === "a" ? href : undefined}
-      className={
-        "relative inline-flex items-center justify-center overflow-hidden " +
-        "rounded-xl px-5 py-2.5 font-normal transition  " +
-        "border border-neutral-200 bg-black  backdrop-blur shadow-sm hover:shadow " +
-        "text-white group " +
-        className
-      }
-      style={{ WebkitTapHighlightColor: "transparent" }}
-    >
+    <Comp {...compProps}>
       {/* Gooey effect overlay */}
       <span
         className="pointer-events-none absolute left-0 top-0 w-full h-full z-0"

@@ -1,7 +1,8 @@
 import React from 'react';
 import BookingForm from './BookingForm';
 import GlassButton from './GlassButton';
-import { Phone } from 'lucide-react';
+import { MdStart } from "react-icons/md";
+
 
 const Hero = () => {
   return (
@@ -21,15 +22,11 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
           
 
-            <GlassButton as="a" href="#fleet" className="ml-2">
+            <GlassButton as="a" to="#fleet" className="ml-2">
               <span className="inline-flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24">
-                  <rect x="3" y="7" width="18" height="7" rx="2" stroke="currentColor" strokeWidth="1.5"/>
-                  <rect x="5" y="14" width="2.5" height="3" rx="1" stroke="currentColor" strokeWidth="1.5"/>
-                  <rect x="16.5" y="14" width="2.5" height="3" rx="1" stroke="currentColor" strokeWidth="1.5"/>
-                  <rect x="7.5" y="10" width="9" height="2" rx="1" fill="currentColor"/>
-                </svg>
+               
                 View
+                <MdStart/>
               </span>
             </GlassButton>
           </div>

@@ -238,7 +238,7 @@ export default function HeaderNav() {
             })}
 
             {/* CTA Button */}
-            <GlassButton as="a" href="#booking" className="ml-2">
+            <GlassButton as="a" to="/booking" className="ml-2">
               <span className="inline-flex items-center gap-2">
                 <Phone size={16} />
                 Book Now

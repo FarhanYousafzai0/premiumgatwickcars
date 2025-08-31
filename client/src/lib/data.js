@@ -40,16 +40,19 @@ export const data = [
 
 
     {
+      id:1,
         title: "Easy Booking",
         des: "Simple and easy steps to book your ride securely and reliably.",
         icon: Car,
     },
     {
+      id:2,
         title: "Unbeatable Rates",
         des: "Enjoy competitive, transparent pricing with no hidden fees. Get the best value for your journey every time.",
         icon: CreditCard,
     },
     {
+      id:3,
         title: "24/7 Availability",
         des: "Book and travel any time, day or night. Our service is available around the clock to fit your schedule.",
         icon: Headphones,
