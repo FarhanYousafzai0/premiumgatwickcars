@@ -88,11 +88,7 @@ export default function HeaderNav() {
     return () => window.removeEventListener("scroll", updateScrollY);
   }, []);
 
-  // Remove effect that closes drawer on route change (no pathname)
-  // useEffect(() => {
-  //   setOpen(false);
-  //   setMobileServicesOpen(false);
-  // }, [pathname]);
+  
 
   // Hide header logic
   const shouldHide = dir === "down" && scrollY > 100;
@@ -163,7 +159,7 @@ export default function HeaderNav() {
                     key={item.to}
                     to={item.to}
                     className={
-                      "px-3 py-2 rounded-md text-[16px] capitalize font-medium transition text-gray-700 hover:text-black"
+                      "px-3 py-2 rounded-md text-[16px]  uppercase font-medium transition text-gray-700 hover:text-black"
                     }
                   >
                     {item.label}

@@ -1,9 +1,12 @@
+import { IoIosSend } from "react-icons/io";
 
 
 import React, { useState } from "react";
 import { SpinnerDotted } from "spinners-react";
 import GlassButton from "../components/Home/GlassButton";
 import { RiArrowRightUpLine } from "react-icons/ri";
+import { LocateIcon, Mail, MailIcon, Phone } from "lucide-react";
+import { IoLocationOutline } from "react-icons/io5";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -67,9 +70,9 @@ const Contact = () => {
      
 
       {/* Top Heading */}
-      <div className="md:w-[80%] w-[90%] py-20 mx-auto">
+      <div className="md:w-[90%] w-[90%] py-20 mx-auto">
         <span className="md:text-6xl text-4xl font-semibold">
-          About Us — <br /> Let’s Make Your Journey Seamless
+           Let’s Make Your Journey Seamless
         </span>
 
         {/* Form + Contact Info */}
@@ -178,7 +181,7 @@ const Contact = () => {
                 type="text"
                 id="queryReason"
                 name="queryReason"
-                placeholder="Booking, Refund, Fleet Inquiry..."
+                placeholder="Booking, Refund,Complaint,Lost item, Fleet Inquiry..."
                 className="w-full border-b border-neutral-300 bg-transparent py-2 outline-none text-neutral-600"
                 value={formData.queryReason}
                 onChange={handleChange}
@@ -228,7 +231,7 @@ const Contact = () => {
               ) : (
                 "Submit"
               )}
-                <RiArrowRightUpLine size={25}/>
+                <IoIosSend size={25}/>
               </span>
             </GlassButton>
             {/* Submit */}
@@ -242,9 +245,9 @@ const Contact = () => {
               <h5 className="text-neutral-400 uppercase text-xs mb-2">
                 Contact Details
               </h5>
-              <p className="mb-1 text-black">📞 +92 319 7421574</p>
-              <p className="mb-1 text-black">✉️ coderwithferry@gmail.com</p>
-              <p className="text-black">📍 Karachi, Pakistan</p>
+              <p className="mb-1 text-black flex  items-center gap-1"><Phone size={15}/> +92 319 7421574</p>
+              <p className="mb-1 text-black flex items-center gap-1"> <MailIcon size={15}/> coderwithferry@gmail.com</p>
+              <p className="text-black flex items-center gap-1"><IoLocationOutline size={15} />  Karachi, Pakistan</p>
             </div>
 
             {/* Business Info */}
