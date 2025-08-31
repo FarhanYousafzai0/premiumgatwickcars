@@ -19,7 +19,7 @@ const WhyChoseUs = () => {
         Experience seamless airport transfers with instant quotes, transparent pricing, and 24/7 support. Ride in comfort and style—every time.
       </p>
 
-      <GlassButton as="a" to="/about" className="ml-2">
+      <GlassButton as="a" to="/about" >
               <span className="inline-flex items-center gap-1">
             
                 Explore

@@ -22,7 +22,7 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
           
 
-            <GlassButton as="a" to="#fleet" className="ml-2">
+            <GlassButton as="a" to="#fleet" className="">
               <span className="inline-flex items-center gap-2">
                
                 View

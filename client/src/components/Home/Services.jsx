@@ -14,7 +14,7 @@ const Services = () => {
             Reliable airport transfers, business travel, and city tours—ride in comfort every time.
           </p>
 
-          <GlassButton as="a" to="/contact" className="ml-2">
+          <GlassButton as="a" to="/contact" >
               <span className="inline-flex items-center gap-1">
             
                 Learn more

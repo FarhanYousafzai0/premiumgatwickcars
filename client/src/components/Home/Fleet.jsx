@@ -19,6 +19,14 @@ export default function FleetSection() {
             from daily commutes to luxury travel. Impeccably maintained, driven
             by professional chauffeurs.
           </p>
+
+          <GlassButton as="a" to="/fleet" className="mt-2">
+              <span className="inline-flex items-center gap-1">
+            
+                Learn more
+                <RiArrowRightUpLine size={25}/>
+              </span>
+            </GlassButton>
         </div>
 
         {/* Fleet grid */}

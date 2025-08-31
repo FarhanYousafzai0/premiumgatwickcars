@@ -234,7 +234,7 @@ export default function HeaderNav() {
             })}
 
             {/* CTA Button */}
-            <GlassButton as="a" to="/booking" className="ml-2">
+            <GlassButton as="a" to="/booking">
               <span className="inline-flex items-center gap-2">
                 <Phone size={16} />
                 Book Now
@@ -370,8 +370,7 @@ export default function HeaderNav() {
                 <div className="mt-4 px-3">
                   <GlassButton 
                     as="a" 
-                    href="#booking" 
-                    className="w-full"
+                   to="/book" 
                     onClick={() => setOpen(false)}
                   >
                     <span className="inline-flex items-center justify-center gap-2">
