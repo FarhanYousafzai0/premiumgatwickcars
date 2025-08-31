@@ -7,6 +7,7 @@ import Fleet from "./pages/Fleet";
 import Contact from "./pages/Contact";
 import Nav from "./components/Home/Nav";
 import Footer from "./components/Home/Footer";
+import WhatsAppButton from "./components/WhatsAppButton";
 
 // Pages
 
@@ -21,7 +22,7 @@ const App = () => {
         <Route path="/fleet" element={<Fleet />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
-
+<WhatsAppButton/>
       <Footer/>
     </BrowserRouter>
   );

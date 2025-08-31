@@ -1,5 +1,7 @@
 import React from "react";
 import { fleet } from "../../lib/data";
+import { RiArrowRightUpLine } from "react-icons/ri";
+import GlassButton from "./GlassButton";
 
 
 
@@ -45,39 +47,57 @@ export default function FleetSection() {
       </div>
 
       {/* Luxury Ride Highlight */}
-      <div className=" text-white">
-        <div className="max-w-[90%] rounded-md bg-black mx-auto px-4 sm:px-6 lg:px-8 py-16 grid gap-10 lg:grid-cols-2 items-center">
+      <div className=" text-black">
+        <div className="max-w-[90%] rounded-md border border-neutral-200 bg-white/40 mx-auto px-4 sm:px-6 lg:px-8 py-16 grid grid-cols-1 gap-10 lg:grid-cols-2 items-center">
           {/* Text */}
           <div>
             <h3 className="text-3xl sm:text-4xl font-bold mb-6">
               Book Your Ride Today
             </h3>
-            <p className="text-gray-300 mb-4">
+            <p className=" mb-4">
               Experience the difference with Crawley Gatwick Taxis — where every
               ride is a journey in luxury and comfort. Whether you need a quick
               ride across town or an extended excursion, we’re ready to serve
               you.
             </p>
-            <p className="text-gray-300 mb-6">
+            <p className=" mb-6">
               We’re more than just chauffeurs; we’re your trusted travel
               partner. Reliable, stylish, and safe. Let us redefine the way you
               move.
             </p>
-            <a
-              href="#booking"
-              className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-white text-black font-medium hover:bg-gray-100 transition"
-            >
-              Learn More →
-            </a>
+            <GlassButton as="a" to="/contact" className="ml-2">
+              <span className="inline-flex items-center gap-1">
+            
+                Learn more
+                <RiArrowRightUpLine size={25}/>
+              </span>
+            </GlassButton>
           </div>
 
           {/* Image */}
-          <div className="rounded-2xl overflow-hidden shadow-lg">
-            <img
-              src="https://source.unsplash.com/800x500/?luxury,interior"
-              alt="Luxury ride interior"
-              className="w-full h-full object-cover"
-            />
+          <div className="rounded-2xl w-full overflow-hidden shadow-lg">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <img
+                src="/Fleet1.png"
+                alt="Luxury Fleet 1"
+                className="w-full h-50 object-cover rounded-xl"
+              />
+              <img
+                src="/Fleet2.png"
+                alt="Luxury Fleet 2"
+                className="w-full h-50 object-cover rounded-xl"
+              />
+              <img
+                src="/Fleet3.png"
+                alt="Luxury Fleet 1"
+                className="w-full h-50 object-cover rounded-xl"
+              />
+              <img
+                src="/Fleet4.png"
+                alt="Luxury Fleet 2"
+                className="w-full h-50 object-cover rounded-xl"
+              />
+            </div>
           </div>
         </div>
       </div>
