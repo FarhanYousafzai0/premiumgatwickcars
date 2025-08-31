@@ -32,11 +32,13 @@ export default function ChauffeurSection() {
               src="/Busniessman.webp"
               alt="Business person booking taxi"
               className="w-full h-full object-cover"
+              loading="lazy"
             />
           </div>
           <div className="rounded-xl overflow-hidden shadow-sm">
             <img
               src="/Girl.webp"
+              loading="lazy"
               alt="Traveler using booking app"
               className="w-full h-full object-cover"
             />

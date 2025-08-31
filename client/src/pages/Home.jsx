@@ -10,13 +10,13 @@ import Services from '../components/Home/Services.jsx'
 const Home = () => {
   return (
     <>
-     <div className=' w-screen '>
+    
 
      <Hero/>
     <WhyChoseUs/>
     <ChauffeurSection/>
     <Services/>
-     </div>
+     
     </>
   )
 }

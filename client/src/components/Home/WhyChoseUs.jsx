@@ -10,7 +10,7 @@ const WhyChoseUs = () => {
     <>
     
 
-    <div className='relative w-[90%]  h-auto  mx-auto md:mt-0 mt-20 p-5'>
+    <section className='relative w-[90%]  h-auto  mx-auto md:mt-0 mt-20 p-5'>
 
 
    <div className="flex flex-col items-center  justify-center w-full text-center gap-3 my-6">
@@ -47,7 +47,7 @@ const WhyChoseUs = () => {
 </div>
 
 
-    </div>
+    </section>
 
     
    

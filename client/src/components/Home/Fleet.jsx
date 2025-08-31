@@ -31,6 +31,7 @@ export default function FleetSection() {
               <div className="overflow-hidden ">
                 <img
                   src={car.img}
+                  loading="lazy"
                   alt={car.name}
                   className="w-full  object-cover group-hover:scale-105 transition"
                 />
@@ -80,21 +81,25 @@ export default function FleetSection() {
               <img
                 src="/Fleet1.png"
                 alt="Luxury Fleet 1"
+                loading="lazy"
                 className="w-full h-50 object-cover rounded-xl"
               />
               <img
                 src="/Fleet2.png"
                 alt="Luxury Fleet 2"
+                loading="lazy"
                 className="w-full h-50 object-cover rounded-xl"
               />
               <img
                 src="/Fleet3.png"
                 alt="Luxury Fleet 1"
+                loading="lazy"
                 className="w-full h-50 object-cover rounded-xl"
               />
               <img
                 src="/Fleet4.png"
                 alt="Luxury Fleet 2"
+                loading="lazy"
                 className="w-full h-50 object-cover rounded-xl"
               />
             </div>
