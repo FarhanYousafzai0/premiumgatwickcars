@@ -1,6 +1,7 @@
 import {
     Clock3,  Car, CreditCard,  Headphones, 
   } from "lucide-react"
+  import { FaPlaneDeparture, FaBriefcase, FaCity, FaBuilding } from "react-icons/fa";
 
 export const data = [
     {
@@ -36,7 +37,7 @@ export const data = [
 
 
 
-  export const services = [
+  export const choices = [
 
 
     {
@@ -58,3 +59,61 @@ export const data = [
         icon: Headphones,
     }
   ]
+
+
+
+
+
+
+  export const services = [
+    {
+      id: 1,
+      title: "Airport Transfers",
+      des: "Start or end your journey stress-free with our airport transfer services. We monitor flight schedules to ensure a seamless transition to and from the airport.",
+      icon: FaPlaneDeparture,
+    },
+    {
+      id: 2,
+      title: "Business Travel",
+      des: "Travel in comfort and style for your business meetings, conferences, and corporate events. Our executive vehicles and professional chauffeurs ensure you arrive on time and make the right impression.",
+      icon: FaBriefcase,
+    },
+    {
+      id: 3,
+      title: "City Tours",
+      des: "Explore the city’s top attractions with our tailored city tours. Enjoy a comfortable ride and local insights from our experienced drivers, making your sightseeing memorable and convenient.",
+      icon: FaCity,
+    },
+    {
+      id: 4,
+      title: "Corporate Accounts",
+      des: "Simplify your company's transportation needs with our corporate accounts. Streamline billing, track expenses, and enjoy priority service for your team and clients.",
+      icon: FaBuilding,
+    }
+  ]
+
+
+
+
+ export const fleet = [
+    {
+      name: "Economy Class",
+      img: "/E.png",
+      desc: "Affordable and comfortable rides for everyday journeys.",
+    },
+    {
+      name: "First Class",
+      img: "/F.png",
+      desc: "Premium luxury vehicles for executives and special occasions.",
+    },
+    {
+      name: "Executive Class",
+      img: "/S.png",
+      desc: "Executive sedans designed for style, space and comfort.",
+    },
+    {
+      name: "Executive Van Class",
+      img: "SS.png",
+      desc: "Spacious vans for group transfers, family trips or events.",
+    },
+  ];

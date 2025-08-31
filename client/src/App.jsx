@@ -6,6 +6,7 @@ import About from "./pages/About";
 import Fleet from "./pages/Fleet";
 import Contact from "./pages/Contact";
 import Nav from "./components/Home/Nav";
+import Footer from "./components/Home/Footer";
 
 // Pages
 
@@ -20,6 +21,8 @@ const App = () => {
         <Route path="/fleet" element={<Fleet />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+
+      <Footer/>
     </BrowserRouter>
   );
 };

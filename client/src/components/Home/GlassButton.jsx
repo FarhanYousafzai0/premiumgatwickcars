@@ -2,6 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+// Responsive GlassButton: adjusts size (padding, font) for different screen sizes
 export default function GlassButton({
   as = "button",
   to,
@@ -13,9 +14,15 @@ export default function GlassButton({
   let compProps = {
     ...props,
     className:
+      // Responsive paddings and font sizes for button
       "relative inline-flex items-center justify-center overflow-hidden " +
-      "rounded-xl px-5 py-2.5 font-normal transition  " +
-      "border border-neutral-200 bg-black  backdrop-blur shadow-sm hover:shadow " +
+      "rounded-xl " +
+      "px-4 py-2 text-sm " + // base: mobile
+      "sm:px-5 sm:py-2.5 sm:text-base " + // small screens
+      "md:px-6 md:py-3 md:text-lg " + // medium screens
+      "lg:px-6 lg:py-3 lg:text-lg " + // large screens
+      "font-normal transition " +
+      "border border-neutral-200 bg-black backdrop-blur shadow-sm hover:shadow " +
       "text-white group " +
       className,
     style: { WebkitTapHighlightColor: "transparent", ...(props.style || {}) },

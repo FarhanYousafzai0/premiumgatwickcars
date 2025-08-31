@@ -2,7 +2,7 @@
 import React from 'react'
 import GlassButton from './GlassButton'
 import { RiArrowRightUpLine } from "react-icons/ri";
-import { services } from '../../lib/data';
+import { choices } from '../../lib/data';
 import ChauffeurSection from './ChauffeurSection';
 
 const WhyChoseUs = () => {
@@ -31,7 +31,7 @@ const WhyChoseUs = () => {
 
 
 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-5">
-  {services.map(({ title, des, icon: Icon, id }) => (
+  {choices.map(({ title, des, icon: Icon, id }) => (
     <div
       key={id}
       className="flex flex-col items-center justify-center text-center p-6 rounded-xl shadow-lg bg-white border border-neutral-200 transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:-rotate-x-2 hover:rotate-y-2"

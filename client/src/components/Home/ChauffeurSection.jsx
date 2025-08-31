@@ -2,8 +2,8 @@ import React from "react";
 
 export default function ChauffeurSection() {
   return (
-    <div className="py-16 bg-white">
-      <div className="w-[95%] h-[100vh] mx-auto px-4 sm:px-6 lg:px-8 grid gap-10 lg:grid-cols-2 items-center">
+    <div className="py-16 ">
+      <div className="w-[95%]  mx-auto px-4 bg-white/40 shadow border-neutral-200 border rounded-md py-2 sm:px-6 lg:px-8 grid gap-10 lg:grid-cols-2 items-center">
         {/* Left: Text */}
         <div>
           <h2 className="text-3xl sm:text-4xl font-bold text-black mb-6">

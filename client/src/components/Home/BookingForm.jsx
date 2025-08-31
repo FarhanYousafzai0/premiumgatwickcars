@@ -172,7 +172,7 @@ function InstantForm() {
 
       <button
         type="button"
-        className="w-full rounded-xl bg-black text-white py-2 text-sm font-semibold tracking-wide flex items-center justify-center gap-2 hover:opacity-90"
+        className="w-full rounded-xl bg-black cursor-pointer text-white py-2 text-sm font-semibold tracking-wide flex items-center justify-center gap-2 hover:opacity-90"
       >
         CALCULATE PRICE <ArrowRight size={16} />
       </button>
