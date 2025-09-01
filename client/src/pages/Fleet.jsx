@@ -13,7 +13,7 @@ function FleetCard({ image, title, description }) {
                  transition-transform duration-300 
                  hover:scale-105 hover:shadow-2xl hover:-rotate-x-2 hover:rotate-y-2"
     >
-      <img src={image} alt={title} className=" object-cover mb-4 p-2 rounded" />
+      <img src={image} loading="lazy" alt={title} className=" object-cover mb-4 p-2 rounded" />
   <div className="p-3">    <h3 className="text-lg font-semibold text-gray-900 mb-2">{title}</h3>
   <p className="text-sm text-gray-600 leading-relaxed">{description}</p></div>
     </div>

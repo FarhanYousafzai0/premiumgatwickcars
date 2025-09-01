@@ -13,7 +13,7 @@ const Contact = () => {
 
 
   return (
-    <div className="w-screen overflow-x-hidden min-h-screen bg-white text-black">
+    <section className="w-screen overflow-x-hidden min-h-screen bg-white text-black">
      
 
   
@@ -30,7 +30,7 @@ const Contact = () => {
         </div>
       </div>
       <GoogleMapEmbed/>
-    </div>
+    </section>
   );
 };
 

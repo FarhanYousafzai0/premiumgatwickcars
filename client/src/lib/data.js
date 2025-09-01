@@ -151,25 +151,25 @@ export const data = [
     },
     {
       title: "Green Class",
-      image: "/cars/green.png",
+      image: "/G.png",
       description:
         "Tesla Model X, Tesla Model S or similar executive electric car. Eco-luxury travel option."
     },
     {
       title: "Executive Van Class 8 Seater",
-      image: "/cars/executive-van-8.png",
+      image: "/S.png",
       description:
         "Mercedes Vito or similar executive van. Seats up to 8 passengers. Free cancellation 3 hours prior to pick-up."
     },
     {
       title: "Luxury Class",
-      image: "/cars/luxury.png",
+      image: "/j.png",
       description:
-        "Mercedes S500 AMG or similar luxury sedan. Free cancellation 3 hours prior. Advance booking required."
+        "Jaguar XF or similar luxury sedan. Free cancellation 3 hours prior. Advance booking required."
     },
     {
       title: "Executive Class",
-      image: "/cars/executive.png",
+      image: "/A.png",
       description:
         "Mercedes E-Class, BMW 5 Series, Audi A6, Jaguar XF or similar executive saloon. Free cancellation 3 hours prior. Chauffeur Meet & Greet included."
     }

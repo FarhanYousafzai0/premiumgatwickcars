@@ -86,7 +86,7 @@ function WhyChooseUs() {
   ];
 
   return (
-    <div className="py-16 bg-white/40 text-black">
+    <section className="py-16 bg-white/40 text-black">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left side - Points */}
@@ -176,7 +176,7 @@ function WhyChooseUs() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
