@@ -8,6 +8,7 @@ import Contact from "./pages/Contact";
 import Nav from "./components/Home/Nav";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
+import ServicePage from "./pages/ServicePage";
 
 // Pages
 
@@ -21,6 +22,9 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/fleet" element={<Fleet />} />
         <Route path="/contact" element={<Contact />} />
+
+         {/* Dynamic services */}
+         <Route path="/services/:serviceId" element={<ServicePage />} />
       </Routes>
 <WhatsAppButton/>
       <Footer/>

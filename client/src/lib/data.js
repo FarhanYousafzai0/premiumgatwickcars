@@ -174,3 +174,29 @@ export const data = [
         "Mercedes E-Class, BMW 5 Series, Audi A6, Jaguar XF or similar executive saloon. Free cancellation 3 hours prior. Chauffeur Meet & Greet included."
     }
   ];
+
+
+
+  export const servicesData = [
+    {
+      id: "hourly",
+      title: "Hourly Airport Taxi",
+      path: "/services/hourly",
+    },
+    {
+      id: "gatwick",
+      title: "Gatwick Airport Taxi",
+      path: "/services/gatwick",
+    },
+    {
+      id: "redhill",
+      title: "Redhill Airport Taxi",
+      path: "/services/redhill",
+    },
+    {
+      id: "luxury",
+      title: "Luxury Business Transfer",
+      path: "/services/luxury",
+    },
+  ];
+  
