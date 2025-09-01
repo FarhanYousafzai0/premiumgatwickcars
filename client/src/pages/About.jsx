@@ -103,7 +103,7 @@ function WhyChooseUs() {
                   key={index}
                   className="flex items-start space-x-4 group"
                 >
-                  <div className="flex-shrink-0 w-12 h-12 bg-black/5 rounded-lg flex items-center justify-center text-black group-hover:bg-black/20 transition-colors">
+                  <div className="flex-shrink-0 w-12 h-12 bg-black rounded-lg flex items-center justify-center text-white group-hover:bg-black/20 transition-colors">
                     {reason.icon}
                   </div>
                   <div>
@@ -122,13 +122,13 @@ function WhyChooseUs() {
           {/* Right side - Illustration */}
           <div className="relative">
             <div className="bg-white/80 rounded-2xl p-8 text-black relative overflow-hidden border border-neutral-200 shadow-md">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-black/5 rounded-full -mr-16 -mt-16"></div>
-              <div className="absolute bottom-0 left-0 w-24 h-24 bg-black/5 rounded-full -ml-12 -mb-12"></div>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-black rounded-full -mr-16 -mt-16"></div>
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-black rounded-full -ml-12 -mb-12"></div>
 
               <div className="relative z-10">
                 <div className="mb-6">
-                  <div className="w-16 h-16 bg-black/5 rounded-lg flex items-center justify-center mb-4">
-                    <CheckCircle className="w-8 h-8 text-black" />
+                  <div className="w-16 h-16 bg-black text-white rounded-lg flex items-center justify-center mb-4">
+                    <CheckCircle className="w-8 h-8 " />
                   </div>
                   <h3 className="text-2xl font-bold mb-2">Trusted by Thousands</h3>
                   <p className="text-black/60">
@@ -206,7 +206,7 @@ function Mission() {
         {values.map((val, i) => (
           <span
             key={i}
-            className="px-6 py-3 bg-white/80 hover:bg-black/10 rounded-full text-sm font-medium text-black hover:text-black transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md border border-neutral-200"
+            className="px-6 py-3 bg-black/5  rounded-full text-sm font-medium text-black hover:text-black transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md border border-neutral-200"
           >
             {val}
           </span>
@@ -248,7 +248,7 @@ function Stats() {
           {stats.map((stat, index) => (
             <div key={index} className="text-center text-black">
               <div className="flex justify-center mb-4">
-                <div className="w-12 h-12 bg-black/5 rounded-lg flex items-center justify-center">
+                <div className="w-12 h-12 bg-black text-white rounded-lg flex items-center justify-center">
                   {stat.icon}
                 </div>
               </div>

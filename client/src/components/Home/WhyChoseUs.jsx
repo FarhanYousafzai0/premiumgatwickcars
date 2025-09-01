@@ -34,7 +34,7 @@ const WhyChoseUs = () => {
   {choices.map(({ title, des, icon: Icon, id }) => (
     <div
       key={id}
-      className="flex flex-col items-center justify-center text-center p-6 rounded-xl shadow-lg bg-white border border-neutral-200 transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:-rotate-x-2 hover:rotate-y-2"
+      className="flex flex-col items-center justify-center text-center p-4 rounded-xl shadow-lg bg-white border border-neutral-200 transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:-rotate-x-2 hover:rotate-y-2"
       style={{ minHeight: "320px", height: "100%" }}
     >
       <div className="flex items-center justify-center mb-4">
