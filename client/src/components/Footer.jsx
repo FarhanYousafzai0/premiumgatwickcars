@@ -40,12 +40,15 @@ const Footer = () => {
               <a href="/contact" className="hover:underline">Contact</a>
             </li>
             <li>
-              <a href="/faq" className="hover:underline">FAQ</a>
+              <a href="/terms-and-conditions" className="hover:underline">Terms and Conditions</a>
+            </li>
+            <li>
+              <a href="/privacy-policy" className="hover:underline">Privacy Policy</a>
             </li>
           </ul>
         </div>
         {/* Get in Touch */}
-        <div>
+        <div >
           <h3 className="text-lg font-semibold mb-2">Get in Touch</h3>
           <form className="flex flex-col gap-2">
             <input
@@ -67,7 +70,11 @@ const Footer = () => {
           </form>
         </div>
       </div>
-      <div className="mt-8 text-center text-xs text-gray-400">
+      {/* Additional row for FAQs, Privacy Policy, and Links */}
+      <div className="mt-8 flex flex-col md:flex-row justify-center items-center gap-4 text-xs text-gray-500">
+       
+      </div>
+      <div className="mt-4 text-center text-xs text-gray-400">
         &copy; {new Date().getFullYear()} Crawley Gatwick Taxis. All rights reserved.
       </div>
     </footer>

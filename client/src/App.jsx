@@ -9,6 +9,8 @@ import Nav from "./components/Home/Nav";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
 import ServicePage from "./pages/ServicePage";
+import TermsAndConditions from "./components/Home/TermsAndConditions";
+import PrivacyPolicy from "./components/Home/PrivacyPolicy";
 
 // Pages
 
@@ -22,6 +24,8 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/fleet" element={<Fleet />} />
         <Route path="/contact" element={<Contact />} />
+       <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
          {/* Dynamic services */}
          <Route path="/services/:serviceId" element={<ServicePage />} />
