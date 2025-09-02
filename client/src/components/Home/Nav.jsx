@@ -154,7 +154,7 @@ export default function HeaderNav() {
                   }}
                 >
                   <button
-                    className="px-3 py-2 rounded-md text-[16px] capitalize font-medium flex items-center gap-1 text-gray-700 hover:text-black"
+                    className="px-3 py-2 rounded-md uppercase text-[16px] capitalize font-medium flex items-center gap-1 text-gray-700 hover:text-black"
                     type="button"
                   >
                     {item.label}

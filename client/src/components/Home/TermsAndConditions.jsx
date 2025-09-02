@@ -67,15 +67,13 @@ export default function TermsAndConditions() {
         </p>
 
         {/* Action buttons */}
-        <div className="flex flex-col sm:flex-row gap-4">
-          <button className="px-6 py-3 rounded-lg cursor-pointer bg-gray-100 text-gray-700 font-medium hover:bg-gray-200 transition">
+        <div className="flex  gap-4 items-center">
+          <button className="px-6 py-3 rounded-lg cursor-pointer bg-gray-100 text-gray-700 font-medium hover:bg-gray-200 transition min-w-max">
             Not right now
           </button>
-          <GlassButton className="cursor-pointer">
-              <span className="inline-flex items-center gap-1">
-            
+          <GlassButton className="cursor-pointer">            
               I agree with terms
-              </span>
+  
             </GlassButton>
 
 

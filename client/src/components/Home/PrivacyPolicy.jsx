@@ -87,8 +87,8 @@ export default function PrivacyPolicy() {
         </p>
 
         {/* Action buttons */}
-        <div className="flex flex-col sm:flex-row gap-4">
-          <Link to="/" className="px-6 py-3 rounded-lg bg-gray-100 text-gray-700 font-medium hover:bg-gray-200 transition">
+        <div className="flex   gap-4 items-center">
+          <Link to="/" className="px-6 py-3  rounded-lg bg-gray-100 text-gray-700 font-medium hover:bg-gray-200 transition">
           Back
           </Link>
           <GlassButton className="cursor-pointer">
