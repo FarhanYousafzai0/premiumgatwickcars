@@ -200,3 +200,48 @@ export const data = [
     },
   ];
   
+
+
+  export const timeSlots = [
+    '06:00', '06:30', '07:00', '07:30', '08:00', '08:30',
+    '09:00', '09:30', '10:00', '10:30', '11:00', '11:30',
+    '12:00', '12:30', '13:00', '13:30', '14:00', '14:30',
+    '15:00', '15:30', '16:00', '16:30', '17:00', '17:30',
+    '18:00', '18:30', '19:00', '19:30', '20:00', '20:30',
+    '21:00', '21:30', '22:00'
+  ];
+
+
+  export const locations = [
+    
+  
+    // From spreadsheet
+    'LGW - Gatwick Airport - South Terminal',
+    'LGW - Gatwick Airport - North Terminal',
+    'LHR - London Heathrow - T1',
+    'LHR - London Heathrow - T2',
+    'LHR - London Heathrow - T3',
+    'LHR - London Heathrow - T4',
+    'LHR - London Heathrow - T5',
+    'STN - Stansted Airport',
+    'LTN - Luton Airport',
+    'LCY - City Airport',
+    'BQH - Biggin Hill Airport',
+    'BRS - Bristol Airport',
+    'MAN - Manchester Airport',
+    'BHX - Birmingham Airport',
+    'SEN - Southend Airport',
+    'CWL - Cardiff Airport',
+    'LPL - Liverpool Airport',
+    'BOH - Bournemouth Airport',
+    'EXT - Exeter Airport',
+    'NQY - Newquay Airport',
+    'London',
+    'London - East',
+    'London - West',
+    'London - North',
+    'London - South',
+    'Southampton Port',
+    'Portsmouth Port',
+    'Harwich Port'
+  ];

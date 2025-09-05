@@ -97,7 +97,7 @@ export default function HeaderNav() {
         initial={false}
         animate={{ y: shouldHide ? -100 : 0, opacity: shouldHide ? 0 : 1 }}
         transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className="fixed top-0 left-0 right-0 z-50 bg-white/95  backdrop-blur  mx-auto border-b border-gray-200 shadow-sm"
+        className="fixed top-0 left-0 right-0 z-50  bg-white/95  backdrop-blur  mx-auto  shadow-sm"
       >
         <div className="w-screen bg-black h-10">
 
@@ -117,11 +117,11 @@ export default function HeaderNav() {
     
     <a 
    href="mailto:hello@example.com"
-     className="px-3 py-1 rounded-md  text-white transition"
+     className="px-3 py-1 text-xs rounded-md  text-white transition"
    >
     hello@example.com
    </a>
-   <Mail className="text-white"/>
+   <Mail scale={12} className="text-white text-xs"/>
 </div>
          </div>
           

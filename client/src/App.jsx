@@ -13,6 +13,7 @@ import TermsAndConditions from "./components/Home/TermsAndConditions";
 import PrivacyPolicy from "./components/Home/PrivacyPolicy";
 import Booking from "./pages/Booking";
 import AcceptTerms from "./components/Home/AcceptTerms";
+import ScrollToTopButton from "./components/Home/ScrollToTopButton";
 
 // Pages
 
@@ -36,6 +37,7 @@ const App = () => {
          {/* Dynamic services */}
          <Route path="/services/:serviceId" element={<ServicePage />} />
       </Routes>
+      <ScrollToTopButton/>
 <WhatsAppButton/>
       <Footer/>
     </BrowserRouter>
