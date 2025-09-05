@@ -7,8 +7,9 @@ import {
   CreditCard,
   CheckCircle,
   Star,
-  Globe,
-  Phone,
+  Car,
+  Plane,
+  Smile,
 } from "lucide-react";
 
 // ----------------- AboutHero -----------------
@@ -18,25 +19,26 @@ function AboutHero() {
       <div className="absolute inset-0 bg-white opacity-80"></div>
       <div className="relative max-w-7xl mx-auto px-6 lg:px-12 py-20 text-center">
         <div className="inline-block px-4 py-2 bg-black/5 text-black rounded-full text-sm font-medium mb-6">
-          Premium Booking Experience
+          About Us
         </div>
         <h1 className="text-4xl sm:text-6xl font-bold mb-6 text-black">
-          Revolutionizing the Way You Book
+          Reliable Transfers, Anytime You Need
         </h1>
         <p className="text-xl text-black/70 max-w-3xl mx-auto leading-relaxed mb-8">
-          Welcome to <span className="font-semibold text-black">Premium Gatwick Cars</span>, 
-          the next-generation booking platform designed to simplify and elevate 
-          the way you book travel, events, and services. Effortless, secure, and 
-          transparent — every step of the way.
+          At <span className="font-semibold text-black">Premium Gatwick Cars</span>, 
+          we’ve built our reputation on professionalism, trust, and comfort. 
+          With licensed drivers, spotless vehicles, and a commitment to 
+          stress-free travel, we ensure your journey is smooth from the moment 
+          you book until you reach your destination.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
           <div className="flex items-center text-black/70">
             <Star className="w-5 h-5 text-yellow-500 mr-2" />
-            <span className="text-sm">4.9/5 Customer Rating</span>
+            <span className="text-sm">Top-Rated Service</span>
           </div>
           <div className="flex items-center text-black/70">
             <Users className="w-5 h-5 text-black mr-2" />
-            <span className="text-sm">50,000+ Happy Customers</span>
+            <span className="text-sm">Thousands of Happy Customers</span>
           </div>
         </div>
       </div>
@@ -49,39 +51,33 @@ function WhyChooseUs() {
   const reasons = [
     {
       icon: <ShieldCheck className="w-8 h-8" />,
-      title: "100% Secure Booking",
-      description:
-        "Advanced encryption and fraud protection keep your data safe at every step.",
+      title: "Professional & Licensed",
+      description: "Every driver is fully licensed, insured, and trained to provide safe, professional service.",
     },
     {
       icon: <Clock className="w-8 h-8" />,
-      title: "24/7 Customer Support",
-      description:
-        "Round-the-clock assistance from our dedicated support team whenever you need help.",
+      title: "Always On Time",
+      description: "We track your flight and schedule to ensure punctual pick-ups and drop-offs.",
     },
     {
       icon: <Zap className="w-8 h-8" />,
-      title: "Instant Confirmation",
-      description:
-        "Get immediate booking confirmations with real-time availability updates.",
+      title: "No Hidden Charges",
+      description: "Clear, upfront pricing with no surprises — what you see is what you pay.",
     },
     {
-      icon: <CreditCard className="w-8 h-8" />,
-      title: "Flexible Payment Options",
-      description:
-        "Multiple payment methods including credit cards, digital wallets, and installments.",
+      icon: <Car className="w-8 h-8" />,
+      title: "Clean & Comfortable Cars",
+      description: "Our vehicles are spotless, well-maintained, and always smell fresh for your comfort.",
     },
     {
-      icon: <Globe className="w-8 h-8" />,
-      title: "Global Network",
-      description:
-        "Access to premium services and partners worldwide for seamless travel experiences.",
+      icon: <Plane className="w-8 h-8" />,
+      title: "VIP Service",
+      description: "From meet-and-greet to door-to-door transfers, enjoy a premium travel experience.",
     },
     {
-      icon: <Phone className="w-8 h-8" />,
-      title: "Mobile-First Design",
-      description:
-        "Optimized for all devices with our intuitive mobile app and responsive website.",
+      icon: <Smile className="w-8 h-8" />,
+      title: "Polite & Understanding Drivers",
+      description: "Our courteous drivers make your journey stress-free, welcoming, and enjoyable.",
     },
   ];
 
@@ -95,24 +91,17 @@ function WhyChooseUs() {
               Why Choose Us
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-black">
-              Experience the Premium Difference
+              Travel With Confidence
             </h2>
             <div className="space-y-6">
               {reasons.map((reason, index) => (
-                <div
-                  key={index}
-                  className="flex items-start space-x-4 group"
-                >
+                <div key={index} className="flex items-start space-x-4 group">
                   <div className="flex-shrink-0 w-12 h-12 bg-black rounded-lg flex items-center justify-center text-white group-hover:bg-black/20 transition-colors">
                     {reason.icon}
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-black mb-2">
-                      {reason.title}
-                    </h3>
-                    <p className="text-black/70 leading-relaxed">
-                      {reason.description}
-                    </p>
+                    <h3 className="text-lg font-semibold text-black mb-2">{reason.title}</h3>
+                    <p className="text-black/70 leading-relaxed">{reason.description}</p>
                   </div>
                 </div>
               ))}
@@ -132,44 +121,20 @@ function WhyChooseUs() {
                   </div>
                   <h3 className="text-2xl font-bold mb-2">Trusted by Thousands</h3>
                   <p className="text-black/60">
-                    Join our community of satisfied customers who've made Premium Gatwick Cars their go-to booking platform.
+                    Join our community of satisfied customers who trust us for 
+                    reliable and stress-free transfers every day.
                   </p>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4 mt-8">
                   <div className="bg-black/5 rounded-lg p-4 text-center">
                     <div className="text-2xl font-bold">50K+</div>
-                    <div className="text-sm text-black/60">Bookings Made</div>
+                    <div className="text-sm text-black/60">Journeys Completed</div>
                   </div>
                   <div className="bg-black/5 rounded-lg p-4 text-center">
                     <div className="text-2xl font-bold">4.9★</div>
-                    <div className="text-sm text-black/60">Average Rating</div>
+                    <div className="text-sm text-black/60">Customer Rating</div>
                   </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Floating cards */}
-            <div className="absolute -top-4 -left-4 bg-white rounded-lg shadow-lg p-4 border border-neutral-200">
-              <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
-                </div>
-                <div>
-                  <div className="text-sm font-semibold text-black">Booking Confirmed</div>
-                  <div className="text-xs text-black/50">2 minutes ago</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="absolute -bottom-4 -right-4 bg-white rounded-lg shadow-lg p-4 border border-neutral-200">
-              <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 bg-black/5 rounded-full flex items-center justify-center">
-                  <Zap className="w-4 h-4 text-black" />
-                </div>
-                <div>
-                  <div className="text-sm font-semibold text-black">Instant Processing</div>
-                  <div className="text-xs text-black/50">Real-time updates</div>
                 </div>
               </div>
             </div>
@@ -184,10 +149,10 @@ function WhyChooseUs() {
 function Mission() {
   const values = [
     "Transparency",
-    "Innovation",
-    "Security",
-    "Inclusivity",
     "Reliability",
+    "Comfort",
+    "Trust",
+    "Customer Care",
   ];
 
   return (
@@ -195,18 +160,18 @@ function Mission() {
       <div className="inline-block px-4 py-2 bg-black/5 text-black rounded-full text-sm font-medium mb-6">
         Our Mission
       </div>
-      <h2 className="text-3xl sm:text-4xl font-bold mb-6">Driven by Purpose</h2>
+      <h2 className="text-3xl sm:text-4xl font-bold mb-6">Driven by Excellence</h2>
       <p className="text-lg text-black/80 leading-relaxed mb-8">
         At <span className="font-semibold text-black">Premium Gatwick Cars</span>, our mission is
-        to make booking stress-free, accessible, and enjoyable for everyone.
-        We're committed to transparency, innovation, and inclusivity —
-        building a platform where every user feels secure and valued.
+        simple: provide safe, reliable, and comfortable travel with no compromises. 
+        We believe in clear pricing, dependable service, and creating stress-free 
+        journeys for every passenger.
       </p>
       <div className="flex flex-wrap justify-center gap-4">
         {values.map((val, i) => (
           <span
             key={i}
-            className="px-6 py-3 bg-black/5  rounded-full text-sm font-medium text-black hover:text-black transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md border border-neutral-200"
+            className="px-6 py-3 bg-black/5 rounded-full text-sm font-medium text-black hover:text-black transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md border border-neutral-200"
           >
             {val}
           </span>
@@ -226,17 +191,17 @@ function Stats() {
     },
     {
       number: "100K+",
-      label: "Bookings Completed",
+      label: "Transfers Completed",
       icon: <CheckCircle className="w-6 h-6" />,
     },
     {
       number: "24/7",
-      label: "Support Available",
+      label: "Available Anytime",
       icon: <Clock className="w-6 h-6" />,
     },
     {
-      number: "99.9%",
-      label: "Uptime Guarantee",
+      number: "100%",
+      label: "Transparent Pricing",
       icon: <Zap className="w-6 h-6" />,
     },
   ];

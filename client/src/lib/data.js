@@ -37,28 +37,47 @@ export const data = [
 
 
 // Choices
-  export const choices = [
+import {  ShieldCheck, BadgeCheck, Zap, Sparkles, Plane } from "lucide-react";
 
+export const choices = [
+  {
+    id: 1,
+    title: "Professional & Licensed",
+    des: "Travel with confidence — all our drivers are fully licensed, experienced, and dedicated to your safety.",
+    icon: ShieldCheck,
+  },
+  {
+    id: 2,
+    title: "No Hidden Charges",
+    des: "Transparent, upfront pricing every time. What you see is exactly what you pay — no surprises.",
+    icon: Zap,
+  },
+  {
+    id: 3,
+    title: "VIP Service",
+    des: "From executive cars to door-to-door service, enjoy a premium travel experience tailored to you.",
+    icon: Car,
+  },
+  {
+    id: 4,
+    title: "Clean & Fresh Cars",
+    des: "Spotless vehicles with a fresh interior, ensuring every ride is comfortable and welcoming.",
+    icon: Sparkles,
+  },
+  {
+    id: 5,
+    title: "Flight Tracking",
+    des: "We monitor your flight in real time to guarantee on-time pickups — even if your flight is delayed.",
+    icon: Plane,
+  },
+  {
+    id: 6,
+    title: "Polite Drivers",
+    des: "Courteous and understanding chauffeurs who make your journey stress-free and pleasant.",
+    icon: BadgeCheck,
+  },
+];
 
-    {
-      id:1,
-        title: "Easy Booking",
-        des: "Simple and easy steps to book your ride securely and reliably.",
-        icon: Car,
-    },
-    {
-      id:2,
-        title: "Unbeatable Rates",
-        des: "Enjoy competitive, transparent pricing with no hidden fees. Get the best value for your journey every time.",
-        icon: CreditCard,
-    },
-    {
-      id:3,
-        title: "24/7 Availability",
-        des: "Book and travel any time, day or night. Our service is available around the clock to fit your schedule.",
-        icon: Headphones,
-    }
-  ]
 
 
 

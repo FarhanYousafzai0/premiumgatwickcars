@@ -1,9 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChevronLeft, Users, Briefcase, Hand, Car, Phone, User, Calendar, Clock, MapPin } from 'lucide-react';
-import { locations, timeSlots } from '../lib/data';
+
+// Email.js configuration - Replace these with your actual values
+const EMAILJS_CONFIG = {
+  serviceId: 'YOUR_SERVICE_ID', // Replace with your Email.js service ID
+  templateId: 'YOUR_TEMPLATE_ID', // Replace with your Email.js template ID
+  publicKey: 'YOUR_PUBLIC_KEY' // Replace with your Email.js public key
+};
+
+// Sample data - you can move this to a separate file
+const locations = [
+  'Manchester Airport',
+  'Birmingham Airport', 
+  'London Heathrow',
+  'London Gatwick',
+  'Liverpool Airport',
+  'Leeds Bradford Airport',
+  'Newcastle Airport',
+  'Edinburgh Airport',
+  'Glasgow Airport',
+  'Cardiff Airport'
+];
+
+const timeSlots = [
+  '06:00', '06:30', '07:00', '07:30', '08:00', '08:30', '09:00', '09:30',
+  '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30',
+  '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30',
+  '18:00', '18:30', '19:00', '19:30', '20:00', '20:30', '21:00', '21:30',
+  '22:00', '22:30', '23:00', '23:30'
+];
 
 const BookingForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success' or 'error'
   const [formData, setFormData] = useState({
     // Step 1
     from: '',
@@ -44,10 +74,22 @@ const BookingForm = () => {
     }
   ];
 
- 
-  
+  // Load Email.js script
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js';
+    script.async = true;
+    script.onload = () => {
+      if (window.emailjs) {
+        window.emailjs.init(EMAILJS_CONFIG.publicKey);
+      }
+    };
+    document.head.appendChild(script);
 
- 
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
 
   const handleInputChange = (field, value) => {
     setFormData(prev => ({
@@ -74,37 +116,135 @@ const BookingForm = () => {
     setCurrentStep(1);
   };
 
-  const handleSubmit = () => {
-    if (isStep2Complete()) {
-      // Create email content
-      const emailContent = `
-Booking Details:
+  const sendEmail = async () => {
+    if (!window.emailjs) {
+      throw new Error('Email.js not loaded');
+    }
 
-JOURNEY INFORMATION:
-From: ${formData.from}
-To: ${formData.to}
-Selected Car: ${formData.selectedCar}
-Date: ${formData.date}
-Time: ${formData.time}
+    // Template parameters that will be sent to your email template
+    const templateParams = {
+      // Customer information
+      customer_name: formData.name,
+      customer_phone: formData.phone,
+      
+      // Journey details
+      pickup_location: formData.from,
+      destination: formData.to,
+      travel_date: formData.date,
+      travel_time: formData.time,
+      selected_vehicle: formData.selectedCar,
+      
+      // Booking details
+      passenger_count: formData.passengers,
+      luggage_count: formData.luggage,
+      hand_luggage_count: formData.handLuggage,
+      meet_greet: formData.meetGreet ? 'Yes' : 'No',
+      
+      // Additional info
+      booking_date: new Date().toLocaleDateString(),
+      booking_time: new Date().toLocaleTimeString(),
+      
+      // Formatted message for email body
+      message: `
+New Booking Request
 
 CUSTOMER INFORMATION:
 Name: ${formData.name}
 Phone: ${formData.phone}
-Number of Passengers: ${formData.passengers}
+
+JOURNEY DETAILS:
+From: ${formData.from}
+To: ${formData.to}
+Date: ${formData.date}
+Time: ${formData.time}
+Vehicle: ${formData.selectedCar}
+
+BOOKING DETAILS:
+Passengers: ${formData.passengers}
 Luggage: ${formData.luggage}
 Hand Luggage: ${formData.handLuggage}
 Meet & Greet: ${formData.meetGreet ? 'Yes' : 'No'}
-      `;
 
-      // In a real application, you would send this to your backend
-      alert('Booking submitted successfully!\n\nEmail content:\n' + emailContent);
-      console.log('Form Data:', formData);
+Booking submitted on: ${new Date().toLocaleString()}
+      `
+    };
+
+    try {
+      const response = await window.emailjs.send(
+        EMAILJS_CONFIG.serviceId,
+        EMAILJS_CONFIG.templateId,
+        templateParams
+      );
+      
+      console.log('Email sent successfully:', response);
+      return response;
+    } catch (error) {
+      console.error('Email sending failed:', error);
+      throw error;
+    }
+  };
+
+  const handleSubmit = async () => {
+    if (!isStep2Complete()) return;
+
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      await sendEmail();
+      setSubmitStatus('success');
+      
+      // Reset form after successful submission
+      setTimeout(() => {
+        setFormData({
+          from: '',
+          to: '',
+          selectedCar: '',
+          date: '',
+          time: '',
+          name: '',
+          phone: '',
+          passengers: '',
+          luggage: '',
+          handLuggage: '',
+          meetGreet: false
+        });
+        setCurrentStep(1);
+        setSubmitStatus(null);
+      }, 3000);
+      
+    } catch (error) {
+      setSubmitStatus('error');
+      console.error('Booking submission failed:', error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-white py-8 px-4 mt-10 border-gray-200 shadow-lg">
-      <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen bg-gray-50 py-8 px-4 mt-10 border-neutral-200">
+      <div className="max-w-4xl mx-auto rounded-md">
+        {/* Success/Error Messages */}
+        {submitStatus && (
+          <div className={`mb-6 p-4 rounded-lg ${
+            submitStatus === 'success' 
+              ? 'bg-green-100 text-green-800 border border-green-200' 
+              : 'bg-red-100 text-red-800 border border-red-200'
+          }`}>
+            {submitStatus === 'success' ? (
+              <div>
+                <h3 className="font-semibold">Booking Submitted Successfully! ✅</h3>
+                <p>Thank you for your booking. We will contact you shortly to confirm your reservation.</p>
+              </div>
+            ) : (
+              <div>
+                <h3 className="font-semibold">Booking Failed ❌</h3>
+                <p>Sorry, there was an error submitting your booking. Please try again or contact us directly.</p>
+              </div>
+            )}
+          </div>
+        )}
+
         {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Book Your Ride</h1>
@@ -181,6 +321,7 @@ Meet & Greet: ${formData.meetGreet ? 'Yes' : 'No'}
                       type="date"
                       value={formData.date}
                       onChange={(e) => handleInputChange('date', e.target.value)}
+                      min={new Date().toISOString().split('T')[0]}
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
                       required
                     />
@@ -387,10 +528,17 @@ Meet & Greet: ${formData.meetGreet ? 'Yes' : 'No'}
                 <div className="flex justify-end">
                   <button
                     onClick={handleSubmit}
-                    disabled={!isStep2Complete()}
-                    className="px-6 py-3 bg-black text-white rounded-md font-medium disabled:bg-gray-400 disabled:cursor-not-allowed hover:bg-gray-800 transition-colors"
+                    disabled={!isStep2Complete() || isSubmitting}
+                    className="px-6 py-3 bg-black text-white rounded-md font-medium disabled:bg-gray-400 disabled:cursor-not-allowed hover:bg-gray-800 transition-colors flex items-center"
                   >
-                    Book Now
+                    {isSubmitting ? (
+                      <>
+                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
+                        Submitting...
+                      </>
+                    ) : (
+                      'Book Now'
+                    )}
                   </button>
                 </div>
               </div>
@@ -456,6 +604,8 @@ Meet & Greet: ${formData.meetGreet ? 'Yes' : 'No'}
             </div>
           </div>
         )}
+
+     
       </div>
     </div>
   );
