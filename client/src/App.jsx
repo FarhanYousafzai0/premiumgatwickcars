@@ -11,6 +11,8 @@ import WhatsAppButton from "./components/WhatsAppButton";
 import ServicePage from "./pages/ServicePage";
 import TermsAndConditions from "./components/Home/TermsAndConditions";
 import PrivacyPolicy from "./components/Home/PrivacyPolicy";
+import Booking from "./pages/Booking";
+import AcceptTerms from "./components/Home/AcceptTerms";
 
 // Pages
 
@@ -18,12 +20,16 @@ import PrivacyPolicy from "./components/Home/PrivacyPolicy";
 const App = () => {
   return (
     <BrowserRouter>
+    <AcceptTerms/>
      <Nav/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/fleet" element={<Fleet />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/booking" element={<Booking />} />
+
+        
        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 

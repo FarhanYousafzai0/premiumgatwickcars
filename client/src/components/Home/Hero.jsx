@@ -7,7 +7,7 @@ import { MdStart } from "react-icons/md";
 const Hero = () => {
   return (
     <>
-      <div style={{backgroundImage: `url('/')`}} className="relative w-[90%] mt-5 mx-auto md:h-screen h-auto    grid grid-cols-1 md:grid-cols-2">
+      <div  className="relative w-[90%] mt-10 mx-auto md:h-screen h-auto    grid grid-cols-1 md:grid-cols-2">
         {/* Left: Text */}
         <div className="flex flex-col items-start gap-5 p-5">
           <h1 className=" text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">

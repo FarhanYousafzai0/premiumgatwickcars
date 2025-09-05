@@ -20,7 +20,7 @@ export default function GlassButton({
       "px-4 py-3 text-sm " + // base: mobile
       "sm:px-5 sm:py-2.5 sm:text-base " + // small screens
       "md:px-6 md:py-3 md:text-lg " + // medium screens
-      "lg:px-6 lg:py-3 lg:text-lg " + // large screens
+      "lg:px-5 lg:py-2 lg:text-normal " + // large screens
       "font-normal transition " +
       "border border-neutral-200 bg-black w-max backdrop-blur shadow-sm hover:shadow " +
       "text-white group " +
