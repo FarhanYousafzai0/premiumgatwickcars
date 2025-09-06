@@ -4,9 +4,10 @@ import { Link, NavLink } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { MoreHorizontal, X, Phone, ChevronDown, ChevronRight, Mail } from "lucide-react";
 import GlassButton from "./GlassButton";
-import { servicesData } from "../../lib/data";
-import Header from "./Header";
+
+
 import { FaPhone } from "react-icons/fa";
+import { servicesData } from "../../lib/servicesdata";
 
 function useScrollDirection({ threshold = 10 } = {}) {
   const [dir, setDir] = useState("up");
@@ -103,15 +104,15 @@ export default function HeaderNav() {
 
          <div className="flex items-center gap-4">
        
-       <div className="flex items-center relative">
+       <div className="flex items-center justify-center relative">
     
              <a 
-              href="tel:+1234567890"
-              className="px-3 py-1 rounded-md  text-white transition"
+              href="tel:+44 7817 202511"
+              className="px-3 py-1 rounded-md text-xs  text-white transition"
             >
-             +9877 3434332
+            +44 7817 202511
             </a>
-            <FaPhone className="text-white"/>
+            <FaPhone size={12} className="text-white"/>
        </div>
        <div className="flex items-center relative">
     
@@ -119,9 +120,9 @@ export default function HeaderNav() {
    href="mailto:hello@example.com"
      className="px-3 py-1 text-xs rounded-md  text-white transition"
    >
-    hello@example.com
+   premiumgatwickcars@gmail.com
    </a>
-   <Mail scale={12} className="text-white text-xs"/>
+   <Mail  size={12} className="text-white text-xs"/>
 </div>
          </div>
           

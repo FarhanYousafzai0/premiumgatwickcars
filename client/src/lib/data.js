@@ -114,28 +114,24 @@ export const choices = [
 
 // Fleet
 
- export const fleet = [
-    {
-      name: "Economy Class",
-      img: "/E.png",
-      desc: "Affordable and comfortable rides for everyday journeys.",
-    },
-    {
-      name: "First Class",
-      img: "/F.png",
-      desc: "Premium luxury vehicles for executives and special occasions.",
-    },
-    {
-      name: "Executive Class",
-      img: "/S.png",
-      desc: "Executive sedans designed for style, space and comfort.",
-    },
-    {
-      name: "Executive Van Class",
-      img: "SS.png",
-      desc: "Spacious vans for group transfers, family trips or events.",
-    },
-  ];
+export const fleet = [
+  {
+    name: "Business Class (Saloon)",
+    img: "/fleet/sloon.png", 
+    desc: "Comfortable Saloon car for everyday and airport journeys. Seats up to 4 passengers with 2 suitcases. Perfect for business trips and small groups."
+  },
+  {
+    name: "First Class (Mercedes Executive)",
+    img: "/fleet/merci.png", 
+    desc: "Premium Mercedes Executive sedan for VIPs and special occasions. Seats up to 3 passengers with 3 suitcases. Ideal for weddings, corporate travel, and luxury rides."
+  },
+  {
+    name: "Executive Van Class (VIP Van)",
+    img: "/fleet/vanE.png", 
+    desc: "Spacious Executive VIP Van for families and groups. Seats up to 8 passengers with large bags and hand luggage. Perfect for airport transfers, tours, and events."
+  }
+];
+
 
 
 
@@ -196,28 +192,6 @@ export const choices = [
 
 
 
-  export const servicesData = [
-    {
-      id: "hourly",
-      title: "Hourly Airport Taxi",
-      path: "/services/hourly",
-    },
-    {
-      id: "gatwick",
-      title: "Gatwick Airport Taxi",
-      path: "/services/gatwick",
-    },
-    {
-      id: "redhill",
-      title: "Redhill Airport Taxi",
-      path: "/services/redhill",
-    },
-    {
-      id: "luxury",
-      title: "Luxury Business Transfer",
-      path: "/services/luxury",
-    },
-  ];
   
 
 

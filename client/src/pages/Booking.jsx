@@ -547,37 +547,10 @@ Booking submitted on: ${new Date().toLocaleString()}
         </div>
 
         {/* Cars We Have Section - Only show on step 1 */}
-        {currentStep === 1 && (
-          <div className="bg-white rounded-lg shadow-lg p-8">
-            <h2 className="text-2xl font-semibold mb-6 text-gray-900">Cars We Have 👍</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {cars.map(car => (
-                <div key={car.id} className="border border-gray-200 rounded-lg p-6">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">{car.name}</h3>
-                  <div className="space-y-2 text-sm text-gray-600">
-                    <div className="flex items-center">
-                      <Users className="w-4 h-4 mr-2 text-gray-500" />
-                      {car.passengers} passengers
-                    </div>
-                    <div className="flex items-center">
-                      <Briefcase className="w-4 h-4 mr-2 text-gray-500" />
-                      {car.luggage} luggage
-                    </div>
-                    {car.handLuggage > 0 && (
-                      <div className="flex items-center">
-                        <Hand className="w-4 h-4 mr-2 text-gray-500" />
-                        {car.handLuggage} hand luggage
-                      </div>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+        
 
         {/* How to Book Guide - Only show on step 2 */}
-        {currentStep === 2 && (
+        {currentStep === 1 && (
           <div className="bg-white rounded-lg shadow-lg p-8">
             <h2 className="text-2xl font-semibold mb-6 text-gray-900">How to Book</h2>
             <div className="space-y-4 text-gray-600">

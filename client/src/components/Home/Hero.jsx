@@ -16,13 +16,13 @@ const Hero = () => {
             Simple. Transparent. 24/7.
           </h1>
           <p className=" text-base sm:text-lg max-w-xl">
-            Enter your route, choose your time, and get a price immediately. No hidden fees. Premium service in a clean, modern fleet.
+          Book your journey with confidence. Premium cars, licensed drivers, and clear pricing, discussed directly with you, no hidden fees.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
           
 
-            <GlassButton as="a" to="#fleet" className="">
+            <GlassButton as="a" to="/fleet" className="">
               <span className="inline-flex items-center gap-2">
                
                 View
