@@ -98,7 +98,7 @@ export default function HeaderNav() {
         initial={false}
         animate={{ y: shouldHide ? -100 : 0, opacity: shouldHide ? 0 : 1 }}
         transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className="fixed top-0 left-0 right-0 z-50  bg-white/95  backdrop-blur  mx-auto  shadow-sm"
+        className="fixed top-0 left-0 right-0 z-50   mx-auto  shadow-sm"
       >
         <div className="w-screen bg-black h-10">
 

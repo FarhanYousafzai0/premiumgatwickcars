@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, Users, Briefcase, Hand, Car, Phone, User, Calendar, Clock, MapPin } from 'lucide-react';
 import { locations } from '../lib/data';
+import GlassButton from '../components/Home/GlassButton';
 
 // Email.js configuration - Replace these with your actual values
 const EMAILJS_CONFIG = {
@@ -8,9 +9,6 @@ const EMAILJS_CONFIG = {
   templateId: 'template_ggre88n', // Replace with your Email.js template ID
   publicKey: '6Mp9lqUto7ix4_I3O' // Replace with your Email.js public key
 };
-
-// Sample data - you can move this to a separate file
-
 
 const timeSlots = [
   '06:00', '06:30', '07:00', '07:30', '08:00', '08:30', '09:00', '09:30',
@@ -386,13 +384,13 @@ Booking submitted on: ${new Date().toLocaleString()}
 
                 {/* Next Button */}
                 <div className="flex justify-end">
-                  <button
+                  <GlassButton
+                  className=' cursor-pointer'
                     onClick={handleNextStep}
                     disabled={!isStep1Complete()}
-                    className="px-6 py-3 bg-black text-white rounded-md font-medium disabled:bg-gray-400 disabled:cursor-not-allowed hover:bg-gray-800 transition-colors"
                   >
-                    Nearly There →
-                  </button>
+                    Nearly There &rarr;
+                  </GlassButton>
                 </div>
               </div>
             </div>
@@ -401,12 +399,13 @@ Booking submitted on: ${new Date().toLocaleString()}
             <div className="w-full flex-shrink-0">
               <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
                 <div className="flex items-center mb-6">
-                  <button
+                  <GlassButton
                     onClick={handlePreviousStep}
-                    className="mr-4 p-2 rounded-md border border-gray-300 hover:bg-gray-50"
+                    className="mr-4 p-2"
+                    style={{ minWidth: '2.5rem', minHeight: '2.5rem', padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                   >
                     <ChevronLeft className="w-4 h-4" />
-                  </button>
+                  </GlassButton>
                   <h2 className="text-2xl font-semibold text-gray-900">Personal Details</h2>
                 </div>
                 
@@ -510,26 +509,26 @@ Booking submitted on: ${new Date().toLocaleString()}
                       onChange={(e) => handleInputChange('meetGreet', e.target.checked)}
                       className="mr-2 h-4 w-4 text-black focus:ring-black border-gray-300 rounded"
                     />
-                    <span className="text-sm font-medium text-gray-700">Meet & Greet 👍</span>
+                    <span className="text-sm font-medium text-gray-700">Meet & Greet </span>
                   </label>
                 </div>
 
                 {/* Submit Button */}
                 <div className="flex justify-end">
-                  <button
+                  <GlassButton
                     onClick={handleSubmit}
                     disabled={!isStep2Complete() || isSubmitting}
-                    className="px-6 py-3 bg-black text-white rounded-md font-medium disabled:bg-gray-400 disabled:cursor-not-allowed hover:bg-gray-800 transition-colors flex items-center"
+                    className="flex items-center cursor-pointer"
                   >
                     {isSubmitting ? (
                       <>
-                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
+                        <div className="w-4 h-4 border-2  border-white border-t-transparent rounded-full animate-spin mr-2"></div>
                         Submitting...
                       </>
                     ) : (
                       'Book Now'
                     )}
-                  </button>
+                  </GlassButton>
                 </div>
               </div>
             </div>
