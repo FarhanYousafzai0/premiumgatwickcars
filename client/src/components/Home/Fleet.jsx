@@ -18,13 +18,6 @@ export default function FleetSection() {
             From airport transfers and business meetings to weddings, tours, and events, 
             our fleet is designed to match your journey with comfort, style, and reliability.
           </p>
-
-          <GlassButton as="a" to="/fleet" className="mt-2">
-            <span className="inline-flex items-center gap-1">
-              Explore Fleet
-              <RiArrowRightUpLine size={25} />
-            </span>
-          </GlassButton>
         </div>
 
         {/* Fleet grid */}
@@ -43,10 +36,19 @@ export default function FleetSection() {
                 />
               </div>
               <div className="p-5 flex flex-col justify-between">
-                <h3 className="text-lg font-semibold text-black">
-                  {car.name}
-                </h3>
-                <p className="text-sm text-gray-600 mt-2">{car.desc}</p>
+                <h3 className="text-lg font-semibold text-black">{car.name}</h3>
+                {/* Show only short description */}
+                <p className="text-sm text-gray-600 mt-2 line-clamp-2">
+                  {car.desc}
+                </p>
+
+                {/* See More button */}
+                <GlassButton as="a" to="/fleet" className="mt-3 self-start">
+                  <span className="inline-flex items-center gap-1 text-sm">
+                    See More
+                    <RiArrowRightUpLine size={18} />
+                  </span>
+                </GlassButton>
               </div>
             </div>
           ))}

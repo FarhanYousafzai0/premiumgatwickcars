@@ -139,56 +139,25 @@ export const fleet = [
 
 
 
-  export const fleets = [
-    {
-      title: "Executive Van Class",
-      image: "/SS.png",
-      description:
-        "Mercedes V-Class, Mercedes Vito, VW Transporter or similar 7 Seater Car-Van. Free cancellation 3 hours prior to pick-up. Seats up to 7 passengers."
-    },
-    {
-      title: "Economy Class",
-      image: "/E.png",
-      description:
-        "Mercedes C-Class, Tesla Model 3, Toyota Prius, or similar saloon. Eco-friendly ride. Free cancellation 3 hours prior to pick-up."
-    },
-    {
-      title: "First Class",
-      image: "/F.png",
-      description:
-        "Mercedes S-Class, BMW 7 Series, Audi A8, Jaguar XJL or similar executive sedan. Includes chauffeur Meet & Greet service."
-    },
-    {
-      title: "Business Class",
-      image: "/S.png",
-      description:
-        "Mercedes E-Class, BMW 5 Series, Audi A6, Jaguar XF or similar. Free cancellation up to 3 hours prior to pick-up. Chauffeur Meet & Greet included."
-    },
-    {
-      title: "Green Class",
-      image: "/G.png",
-      description:
-        "Tesla Model X, Tesla Model S or similar executive electric car. Eco-luxury travel option."
-    },
-    {
-      title: "Executive Van Class 8 Seater",
-      image: "/S.png",
-      description:
-        "Mercedes Vito or similar executive van. Seats up to 8 passengers. Free cancellation 3 hours prior to pick-up."
-    },
-    {
-      title: "Luxury Class",
-      image: "/j.png",
-      description:
-        "Jaguar XF or similar luxury sedan. Free cancellation 3 hours prior. Advance booking required."
-    },
-    {
-      title: "Executive Class",
-      image: "/A.png",
-      description:
-        "Mercedes E-Class, BMW 5 Series, Audi A6, Jaguar XF or similar executive saloon. Free cancellation 3 hours prior. Chauffeur Meet & Greet included."
-    }
-  ];
+export const fleets = [
+  {
+    title: "Business Class (Saloon)",
+    img: "/fleet/sloon.png", 
+    description:
+      "Comfortable and stylish Saloon car for everyday use and airport journeys. Seats up to 4 passengers with 2 suitcases. Ideal for business travel, airport transfers, and day-to-day rides."
+  },
+  {
+    title: "First Class (Mercedes Executive)",
+    img: "/fleet/merci.png",     description:
+      "Premium Mercedes Executive sedan designed for luxury and comfort. Seats up to 3 passengers with 3 suitcases. Perfect for VIPs, weddings, and special occasions, including chauffeur Meet & Greet service."
+  },
+  {
+    title: "Executive Van Class (VIP Van)",
+    img: "/fleet/vanE.png", 
+    description:
+      "Spacious Executive VIP Van for families and groups. Seats up to 8 passengers with multiple suitcases and hand luggage. Perfect for airport transfers, tours, and events — comfort and space combined."
+  }
+];
 
 
 
