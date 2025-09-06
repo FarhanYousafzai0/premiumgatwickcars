@@ -3,9 +3,9 @@ import { ChevronLeft, Users, Briefcase, Hand, Car, Phone, User, Calendar, Clock,
 
 // Email.js configuration - Replace these with your actual values
 const EMAILJS_CONFIG = {
-  serviceId: 'YOUR_SERVICE_ID', // Replace with your Email.js service ID
-  templateId: 'YOUR_TEMPLATE_ID', // Replace with your Email.js template ID
-  publicKey: 'YOUR_PUBLIC_KEY' // Replace with your Email.js public key
+  serviceId: 'service_h2au2s3', // Replace with your Email.js service ID
+  templateId: 'template_ea32rpc', // Replace with your Email.js template ID
+  publicKey: 'IMjsy3lH3ovpWCMwg' // Replace with your Email.js public key
 };
 
 // Sample data - you can move this to a separate file

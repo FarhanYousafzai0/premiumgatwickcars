@@ -107,20 +107,20 @@ export default function HeaderNav() {
        <div className="flex items-center justify-center relative">
     
              <a 
-              href="tel:+44 7817 202511"
+              href="tel:+01293 310098"
               className="px-3 py-1 rounded-md text-xs  text-white transition"
             >
-            +44 7817 202511
+            01293 310098
             </a>
             <FaPhone size={12} className="text-white"/>
        </div>
        <div className="flex items-center relative">
     
     <a 
-   href="mailto:hello@example.com"
+   href="mailto:info@premiumgatwickcars.com"
      className="px-3 py-1 text-xs rounded-md  text-white transition"
    >
-   premiumgatwickcars@gmail.com
+  info@premiumgatwickcars.com
    </a>
    <Mail  size={12} className="text-white text-xs"/>
 </div>

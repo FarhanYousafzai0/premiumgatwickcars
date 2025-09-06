@@ -22,18 +22,16 @@ const Footer = () => {
             <li>
               <span className="font-medium">Phone:</span>{" "}
               <a href="tel:+441234567890" className="hover:underline">
-                +44 1234 567890
+                +01293 310098
               </a>
             </li>
             <li>
               <span className="font-medium">Email:</span>{" "}
               <a href="mailto:info@premiumgatwickcars.com" className="hover:underline">
-                info@premiumgatwickcars.com
+              info@premiumgatwickcars.com
               </a>
             </li>
-            <li>
-              <span className="font-medium">Address:</span> Crawley, West Sussex, UK
-            </li>
+            
           </ul>
         </div>
 

@@ -10,9 +10,9 @@ const ContactRight = () => {
       <h5 className="text-neutral-400 uppercase text-xs mb-2">
         Contact Details
       </h5>
-      <p className="mb-1 text-black flex  items-center gap-1"><Phone size={15}/> +44 7817 202511</p>
-      <p className="mb-1 text-black flex items-center gap-1"> <MailIcon size={15}/> premiumgatwickcars@gmail.com</p>
-      <p className="text-black flex items-center gap-1"><IoLocationOutline size={15} />United Kingdom </p>
+      <p className="mb-1 text-black flex  items-center gap-1"><Phone size={15}/> +01293 310098</p>
+      <p className="mb-1 text-black flex items-center gap-1"> <MailIcon size={15}/> info@premiumgatwickcars.com</p>
+   
     </div>
 
     {/* Business Info */}
@@ -20,8 +20,8 @@ const ContactRight = () => {
       <h5 className="text-neutral-400 uppercase text-xs mb-2">
         Business Info
       </h5>
-      <p className="text-black">Sher</p>
-      <p className="text-black">Book your premium ride today</p>
+      <p className="text-black font-semibold">Premium Gatwick Cars</p>
+      <p className="text-black italic">"Your trusted booking platform for seamless journeys"</p>
     </div>
   </div>
   )
