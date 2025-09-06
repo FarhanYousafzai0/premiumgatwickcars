@@ -13,7 +13,7 @@ const Contact = () => {
 
 
   return (
-    <section className="w-screen overflow-x-hidden min-h-screen bg-white text-black">
+    <section className="w-screen mt-10 overflow-x-hidden min-h-screen bg-white text-black">
      
 
   

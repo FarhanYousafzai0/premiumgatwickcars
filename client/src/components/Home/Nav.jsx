@@ -96,38 +96,47 @@ export default function HeaderNav() {
         initial={false}
         animate={{ y: shouldHide ? -100 : 0, opacity: shouldHide ? 0 : 1 }}
         transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className="fixed top-0 left-0 z-50 bg-none text-white  mx-auto  shadow-sm"
+        className="fixed top-0 left-0 z-50 bg-none text-white bg-black   mx-auto  shadow-sm"
       >
-        <div className="w-screen h-10 bg-black ">
-          <div className="flex items-center gap-4">
-            <div className="flex items-center justify-center relative">
+        <div className="w-screen h-10  overflow-hidden">
+          <div className="flex items-center gap-4 h-full px-4  md:px-10">
+            <div className="md:flex hidden items-center h-full">
+              <img
+                src="/Logo.png"
+                loading="lazy"
+                alt="Premium Gatwick Cars Logo"
+                className=" w-auto object-contain"
+                style={{ maxHeight: "10rem" }}
+              />
+            </div>
+            <div className="flex items-center gap-2  justify-center relative h-full">
               <a 
                 href="tel:+01293 310098"
-                className="px-3 py-1 rounded-md text-xs  text-white transition"
+                className="text-nowrap py-1 rounded-md text-xs text-white transition"
               >
-                01293 310098
+                +01293 310098
               </a>
-              <FaPhone size={12} className="text-white"/>
+              <FaPhone size={12} className="text-white "/>
             </div>
-            <div className="flex items-center relative">
+            <div className="flex items-center gap-2 relative h-full">
               <a 
                 href="mailto:info@premiumgatwickcars.com"
-                className="px-3 py-1 text-xs rounded-md  text-white transition"
+                className="py-1 text-xs rounded-md text-white transition"
               >
                 info@premiumgatwickcars.com
               </a>
-              <Mail  size={12} className="text-white text-xs"/>
+              <Mail size={12} className="text-white text-xs "/>
             </div>
           </div>
         </div>
-        <div className="w-screen mx-auto flex items-center justify-between py-2 px-10">
+        <div className="w-screen mx-auto flex items-center backdrop-blur-2xl justify-between py-2 md:px-10 px-4">
           {/* Logo */}
           <Link
             to="/"  
             className="flex text-white items-center select-none"
             aria-label="Home"
           >
-           <h1 className="text-2xl">Premium Gatwick Cars</h1>
+           <h1 className="text-1xl">Premium Gatwick Cars</h1>
 
           </Link>
 
@@ -139,7 +148,7 @@ export default function HeaderNav() {
                   <NavLink
                     key={item.to}
                     to={item.to}
-                    className="px-3 py-2 rounded-md  text-white text-[16px] uppercase font-medium transition hover:text-black"
+                    className="px-3 py-2 rounded-md  text-white text-[16px] uppercase font-medium transition"
                   >
                     {item.label}
                   </NavLink>
@@ -159,7 +168,7 @@ export default function HeaderNav() {
                   }}
                 >
                   <button
-                    className="px-3 py-2 rounded-md uppercase text-[16px]  font-medium flex items-center gap-1 text-white hover:text-black"
+                    className="px-3 py-2 rounded-md uppercase text-[16px]  font-medium flex items-center gap-1 text-white "
                     type="button"
                   >
                     {item.label}

@@ -210,7 +210,7 @@ Booking submitted on: ${new Date().toLocaleString()}
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4 mt-10 border-neutral-200">
+    <section className="min-h-screen bg-gray-50 py-8 px-4 mt-10 border-neutral-200">
       <div className="max-w-4xl mx-auto rounded-md">
         {/* Success/Error Messages */}
         {submitStatus && (
@@ -569,7 +569,7 @@ Booking submitted on: ${new Date().toLocaleString()}
 
      
       </div>
-    </div>
+    </section>
   );
 };
 

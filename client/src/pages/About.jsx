@@ -15,12 +15,10 @@ import {
 // ----------------- AboutHero -----------------
 function AboutHero() {
   return (
-    <div className="relative overflow-hidden text-black">
+    <section className="relative overflow-hidden text-black">
       <div className="absolute inset-0 bg-white opacity-80"></div>
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-12 py-20 text-center">
-        <div className="inline-block px-4 py-2 bg-black/5 text-black rounded-full text-sm font-medium mb-6">
-          About Us
-        </div>
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-12 py-30 text-center">
+        
         <h1 className="text-4xl sm:text-6xl font-bold mb-6 text-black">
           Reliable Transfers, Anytime You Need
         </h1>
@@ -42,7 +40,7 @@ function AboutHero() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

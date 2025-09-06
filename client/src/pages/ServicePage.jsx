@@ -18,7 +18,7 @@ export default function ServicePage() {
   }
 
   return (
-    <div className="bg-white text-black">
+    <section className="bg-white text-black">
       {/* Hero Section */}
       <section className="bg-gray-50 py-16 px-4 text-center">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">{service.title}</h1>
@@ -92,6 +92,6 @@ export default function ServicePage() {
           )}
         </div>
       </section>
-    </div>
+    </section>
   );
 }

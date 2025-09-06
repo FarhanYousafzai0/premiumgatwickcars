@@ -6,10 +6,11 @@ const Hero = () => {
   return (
     <>
       <div
-        className="relative h-auto md:h-screen overflow-hidden grid grid-cols-1 md:grid-cols-2 px-4 sm:px-6 lg:px-8 xl:px-10  sm:py-12 md:py-16 py-20"
+        className="relative min-h-screen md:h-screen overflow-hidden grid grid-cols-1 md:grid-cols-2 px-4 sm:px-6 lg:px-8 xl:px-10  sm:py-0 md:py-16 lg:py-30"
         style={{
           backgroundImage: "url('/Aero.png')",
           backgroundSize: "cover",
+         
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}

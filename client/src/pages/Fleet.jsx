@@ -27,7 +27,7 @@ function FleetCard({ img, title, description }) {
 // Main Fleet Section
 export default function Fleet() {
   return (
-    <section className="py-20">
+    <section className="py-25">
       <div className="max-w-7xl bg-white/40 border-neutral-200 border mx-auto p-6 lg:px-12">
         {/* Section Title */}
         <div className="text-center mb-12">
