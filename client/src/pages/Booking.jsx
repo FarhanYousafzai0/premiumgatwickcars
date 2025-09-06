@@ -1,26 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, Users, Briefcase, Hand, Car, Phone, User, Calendar, Clock, MapPin } from 'lucide-react';
+import { locations } from '../lib/data';
 
 // Email.js configuration - Replace these with your actual values
 const EMAILJS_CONFIG = {
-  serviceId: 'service_h2au2s3', // Replace with your Email.js service ID
-  templateId: 'template_ea32rpc', // Replace with your Email.js template ID
-  publicKey: 'IMjsy3lH3ovpWCMwg' // Replace with your Email.js public key
+  serviceId: 'service_u6442nk', // Replace with your Email.js service ID
+  templateId: 'template_ggre88n', // Replace with your Email.js template ID
+  publicKey: '6Mp9lqUto7ix4_I3O' // Replace with your Email.js public key
 };
 
 // Sample data - you can move this to a separate file
-const locations = [
-  'Manchester Airport',
-  'Birmingham Airport', 
-  'London Heathrow',
-  'London Gatwick',
-  'Liverpool Airport',
-  'Leeds Bradford Airport',
-  'Newcastle Airport',
-  'Edinburgh Airport',
-  'Glasgow Airport',
-  'Cardiff Airport'
-];
+
 
 const timeSlots = [
   '06:00', '06:30', '07:00', '07:30', '08:00', '08:30', '09:00', '09:30',
