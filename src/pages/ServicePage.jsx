@@ -20,7 +20,7 @@ export default function ServicePage() {
   return (
     <section className="bg-white text-black">
       {/* Hero Section */}
-      <section className="bg-gray-50 py-16 px-4 text-center">
+      <section className="bg-gray-50 py-30 px-4 text-center">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">{service.title}</h1>
         <p className="text-lg text-gray-600 max-w-3xl mx-auto">
           {service.shortDesc}

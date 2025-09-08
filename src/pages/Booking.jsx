@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, Users, Briefcase, Hand, Car, Phone, User, Calendar, Clock, MapPin } from 'lucide-react';
+import { ChevronLeft, Users, Briefcase, Hand, Car, Phone, User, Calendar, Clock, MapPin, Mail } from 'lucide-react';
 import { locations } from '../lib/data';
 import GlassButton from '../components/Home/GlassButton';
 
@@ -31,7 +31,9 @@ const BookingForm = () => {
     time: '',
     // Step 2
     name: '',
+    email: '',
     phone: '',
+    address: '',
     passengers: '',
     luggage: '',
     handLuggage: '',
@@ -91,7 +93,7 @@ const BookingForm = () => {
   };
 
   const isStep2Complete = () => {
-    return formData.name && formData.phone && formData.passengers && formData.luggage && formData.handLuggage;
+    return formData.name && formData.email && formData.phone && formData.address && formData.passengers && formData.luggage && formData.handLuggage;
   };
 
   const handleNextStep = () => {
@@ -113,7 +115,9 @@ const BookingForm = () => {
     const templateParams = {
       // Customer information
       customer_name: formData.name,
+      customer_email: formData.email,
       customer_phone: formData.phone,
+      customer_address: formData.address,
       
       // Journey details
       pickup_location: formData.from,
@@ -138,7 +142,9 @@ New Booking Request
 
 CUSTOMER INFORMATION:
 Name: ${formData.name}
+Email: ${formData.email}
 Phone: ${formData.phone}
+Address: ${formData.address}
 
 JOURNEY DETAILS:
 From: ${formData.from}
@@ -191,7 +197,9 @@ Booking submitted on: ${new Date().toLocaleString()}
           date: '',
           time: '',
           name: '',
+          email: '',
           phone: '',
+          address: '',
           passengers: '',
           luggage: '',
           handLuggage: '',
@@ -210,7 +218,7 @@ Booking submitted on: ${new Date().toLocaleString()}
   };
 
   return (
-    <section className="min-h-screen bg-gray-50 py-8 px-4 mt-10 border-neutral-200">
+    <section className="min-h-screen bg-gray-50 py-8 px-4 mt-20 border-neutral-200">
       <div className="max-w-4xl mx-auto rounded-md">
         {/* Success/Error Messages */}
         {submitStatus && (
@@ -297,6 +305,22 @@ Booking submitted on: ${new Date().toLocaleString()}
                         <option key={location} value={location}>{location}</option>
                       ))}
                     </select>
+                  </div>
+
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <MapPin className="w-4 h-4 inline mr-1" />
+                      Other address
+                    </label>
+                    <input
+                      type="text"
+                      value={formData.address}
+                      onChange={(e) => handleInputChange('address', e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+                      placeholder="Enter your address"
+                      required
+                    />
                   </div>
 
                   {/* Date */}
@@ -426,6 +450,22 @@ Booking submitted on: ${new Date().toLocaleString()}
                     />
                   </div>
 
+                  {/* Email */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <Mail className="w-4 h-4 inline mr-1" />
+                      Email Address
+                    </label>
+                    <input
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => handleInputChange('email', e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+                      placeholder="Enter your email address"
+                      required
+                    />
+                  </div>
+
                   {/* Phone */}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -441,6 +481,9 @@ Booking submitted on: ${new Date().toLocaleString()}
                       required
                     />
                   </div>
+
+                  {/* Address */}
+                  
 
                   {/* Number of Passengers */}
                   <div>
@@ -535,39 +578,34 @@ Booking submitted on: ${new Date().toLocaleString()}
           </div>
         </div>
 
-        {/* Cars We Have Section - Only show on step 1 */}
-        
-
-        {/* How to Book Guide - Only show on step 2 */}
+        {/* How to Book Guide - Only show on step 1 */}
         {currentStep === 1 && (
           <div className="bg-white rounded-lg shadow-lg p-8">
             <h2 className="text-2xl font-semibold mb-6 text-gray-900">How to Book</h2>
             <div className="space-y-4 text-gray-600">
               <div className="flex items-start">
-                <div className="w-6 h-6 bg-black text-white rounded-full flex items-center justify-center text-sm font-medium mr-3 mt-0.5">1</div>
+                <div className="w-6 h-6 sm:w-7 sm:h-7 bg-black text-white rounded-full flex items-center justify-center text-xs sm:text-sm font-medium mr-3 mt-0.5">1</div>
                 <p>Fill in your journey details including pickup location, destination, date, and time.</p>
               </div>
               <div className="flex items-start">
-                <div className="w-6 h-6 bg-black text-white rounded-full flex items-center justify-center text-sm font-medium mr-3 mt-0.5">2</div>
+                <div className="w-6 h-6 sm:w-7 sm:h-7 bg-black text-white rounded-full flex items-center justify-center text-xs sm:text-sm font-medium mr-3 mt-0.5">2</div>
                 <p>Select your preferred vehicle based on the number of passengers and luggage requirements.</p>
               </div>
               <div className="flex items-start">
-                <div className="w-6 h-6 bg-black text-white rounded-full flex items-center justify-center text-sm font-medium mr-3 mt-0.5">3</div>
-                <p>Provide your personal details and specify passenger count and luggage information.</p>
+                <div className="w-6 h-6 sm:w-7 sm:h-7 bg-black text-white rounded-full flex items-center justify-center text-xs sm:text-sm font-medium mr-3 mt-0.5">3</div>
+                <p>Provide your personal details including email and address, and specify passenger count and luggage information.</p>
               </div>
               <div className="flex items-start">
-                <div className="w-6 h-6 bg-black text-white rounded-full flex items-center justify-center text-sm font-medium mr-3 mt-0.5">4</div>
+                <div className="w-6 h-6 sm:w-7 sm:h-7 bg-black text-white rounded-full flex items-center justify-center text-xs sm:text-sm font-medium mr-3 mt-0.5">4</div>
                 <p>Review all details and click "Book Now" to submit your booking request.</p>
               </div>
               <div className="flex items-start">
-                <div className="w-6 h-6 bg-black text-white rounded-full flex items-center justify-center text-sm font-medium mr-3 mt-0.5">5</div>
+                <div className="w-6 h-6 sm:w-7 sm:h-7 bg-black text-white rounded-full flex items-center justify-center text-xs sm:text-sm font-medium mr-3 mt-0.5">5</div>
                 <p>You will receive a confirmation email with all booking details and further instructions.</p>
               </div>
             </div>
           </div>
         )}
-
-     
       </div>
     </section>
   );
