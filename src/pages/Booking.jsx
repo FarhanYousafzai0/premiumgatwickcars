@@ -425,7 +425,7 @@ Booking submitted on: ${new Date().toLocaleString()}
                 <div className="flex items-center mb-6">
                   <GlassButton
                     onClick={handlePreviousStep}
-                    className="mr-4 p-2"
+                    className="mr-4 p-2 cursor-pointer"
                     style={{ minWidth: '2.5rem', minHeight: '2.5rem', padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                   >
                     <ChevronLeft className="w-4 h-4" />
