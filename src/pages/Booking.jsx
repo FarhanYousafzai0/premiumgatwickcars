@@ -565,7 +565,8 @@ Booking submitted on: ${new Date().toLocaleString()}
                   >
                     {isSubmitting ? (
                       <>
-                        <div className="w-4 h-4 border-2  border-white border-t-transparent rounded-full animate-spin mr-2"></div>
+                        {/* Loader spinner */}
+                        <span className="w-4 h-4 border-2 disabled:cursor-not-allowed border-white border-t-transparent rounded-full animate-spin mr-2 inline-block"></span>
                         Submitting...
                       </>
                     ) : (
