@@ -112,7 +112,7 @@ export default function HeaderNav() {
             <div className="flex items-center gap-2  justify-center relative h-full">
               <a 
                 href="tel:+01293 310098"
-                className="text-nowrap py-1 rounded-md text-xs text-white transition"
+                className="text-nowrap py-1 hover:underline hover:scale-102   rounded-md text-xs text-white transition"
               >
                 +01293 310098
               </a>
@@ -121,7 +121,7 @@ export default function HeaderNav() {
             <div className="flex items-center gap-2 relative h-full">
               <a 
                 href="mailto:info@premiumgatwickcars.com"
-                className="py-1 text-xs rounded-md text-white transition"
+                className="py-1 text-xs rounded-md hover:underline hover:scale-102 text-white transition"
               >
                 info@premiumgatwickcars.com
               </a>
@@ -148,7 +148,7 @@ export default function HeaderNav() {
                   <NavLink
                     key={item.to}
                     to={item.to}
-                    className="px-3 py-2 rounded-md  text-white text-[16px] uppercase font-medium transition"
+                    className="px-3 py-2 rounded-md hover:scale-103  text-white text-[16px] uppercase font-medium transition"
                   >
                     {item.label}
                   </NavLink>
@@ -168,7 +168,7 @@ export default function HeaderNav() {
                   }}
                 >
                   <button
-                    className="px-3 py-2 rounded-md uppercase text-[16px]  font-medium flex items-center gap-1 text-white "
+                    className="px-3 py-2 rounded-md uppercase text-[16px]  cursor-pointer hover:scale-103 tr font-medium flex items-center gap-1 text-white "
                     type="button"
                   >
                     {item.label}
