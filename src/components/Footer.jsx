@@ -1,9 +1,10 @@
 import React from 'react'
+ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
     <footer className="w-[95%] mx-auto px-4 bg-white/40 shadow border-neutral-200 border rounded-md py-6 sm:px-6 lg:px-8 mt-10">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {/* Website Name & Description */}
         <div>
           <h2 className="text-xl font-bold text-black mb-2">Premium Gatwick Cars</h2>
@@ -21,8 +22,9 @@ const Footer = () => {
           <ul className="text-gray-700 text-sm space-y-1">
             <li>
               <span className="font-medium">Phone:</span>{" "}
-              <a href="tel:+441234567890" className="hover:underline">
-                +01293 310098
+              <a href="tel:+01293 310098" className="hover:underline">
+                01293 310098
+                
               </a>
             </li>
             <li>
@@ -38,38 +40,19 @@ const Footer = () => {
         {/* Help */}
         <div>
           <h3 className="text-lg font-semibold mb-2">Quick Links</h3>
-          <ul className="text-gray-700 text-sm space-y-1">
-            <li><a href="/about" className="hover:underline">About Us</a></li>
-            <li><a href="/fleet" className="hover:underline">Our Fleet</a></li>
-            <li><a href="/services" className="hover:underline">Services</a></li>
-            <li><a href="/contact" className="hover:underline">Contact</a></li>
-            <li><a href="/terms-and-conditions" className="hover:underline">Terms & Conditions</a></li>
-            <li><a href="/privacy-policy" className="hover:underline">Privacy Policy</a></li>
-          </ul>
+         
+
+<div className="text-gray-700 text-sm space-y-1">
+  <div><Link to="/about" className="hover:underline">About Us</Link></div>
+  <div><Link to="/fleet" className="hover:underline">Our Fleet</Link></div>
+  <div><Link to="/contact" className="hover:underline">Contact</Link></div>
+  <div><Link to="/terms-and-conditions" className="hover:underline">Terms & Conditions</Link></div>
+  <div><Link to="/privacy-policy" className="hover:underline">Privacy Policy</Link></div>
+</div>
         </div>
 
         {/* Get in Touch */}
-        <div>
-          <h3 className="text-lg font-semibold mb-2">Get in Touch</h3>
-          <form className="flex flex-col gap-2">
-            <input
-              type="email"
-              placeholder="Your email"
-              className="rounded-lg border border-gray-200 px-3 py-2 text-sm bg-white/80 focus:ring-2 focus:ring-black/20 outline-none"
-            />
-            <textarea
-              placeholder="Your message"
-              className="rounded-lg border border-gray-200 px-3 py-2 text-sm bg-white/80 focus:ring-2 focus:ring-black/20 outline-none resize-none"
-              rows={2}
-            />
-            <button
-              type="submit"
-              className="rounded-lg bg-black text-white py-2 text-sm font-semibold hover:opacity-90 transition"
-            >
-              Send
-            </button>
-          </form>
-        </div>
+   
       </div>
 
       {/* Bottom Row */}
