@@ -390,7 +390,7 @@ Booking submitted on: ${new Date().toLocaleString()}
             </div>
 
             {/* Step 2 */}
-            <div className="w-full">
+            <div className="w-full flex-shrink-0 ">
               <div className="bg-white/95 backdrop-blur-sm rounded-lg p-4 sm:p-6 mb-4">
                 <div className="flex items-center mb-4">
                   <GlassButton

@@ -3,7 +3,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { MoreHorizontal, X, Phone, ChevronDown, ChevronRight, Mail } from "lucide-react";
-import GlassButton from "./GlassButton";
+
 
 import { FaPhone } from "react-icons/fa";
 import { servicesData } from "../../lib/servicesdata";
@@ -98,18 +98,22 @@ export default function HeaderNav() {
         transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
         className="fixed top-0 left-0 z-50 bg-none text-white bg-black   mx-auto  shadow-sm"
       >
-        <div className="w-screen h-10  overflow-hidden">
-          <div className="flex items-center gap-4 h-full px-4  md:px-10">
+        <div className="w-screen h-12   overflow-hidden px-4  md:px-10 ">
+          <div className="flex items-center justify-between  h-full ">
             <div className="md:flex hidden items-center h-full">
               <img
                 src="/Logo.png"
                 loading="lazy"
                 alt="Premium Gatwick Cars Logo"
                 className=" w-auto object-contain"
-                style={{ maxHeight: "10rem" }}
+                style={{ maxHeight: "12rem" }}
               />
             </div>
-            <div className="flex items-center gap-2  justify-center relative h-full">
+           
+
+           <div className="flex gap-4">
+           <div className="flex items-center gap-2  justify-center relative h-full">
+           <FaPhone size={12} className="text-white "/>
               <a 
                 href="tel:+01293 310098"
                 className="text-nowrap py-1 hover:underline hover:scale-102   rounded-md text-xs text-white transition"
@@ -117,7 +121,7 @@ export default function HeaderNav() {
                01293 310098
 
               </a>
-              <FaPhone size={12} className="text-white "/>
+             
             </div>
             <div className="flex items-center gap-2 relative h-full">
               <a 
@@ -128,6 +132,7 @@ export default function HeaderNav() {
               </a>
               <Mail size={12} className="text-white text-xs "/>
             </div>
+           </div>
           </div>
         </div>
         <div className="w-screen mx-auto flex items-center backdrop-blur-2xl justify-between py-2 md:px-10 px-4">
@@ -205,12 +210,7 @@ export default function HeaderNav() {
               );
             })}
 
-            {/* CTA Button */}
-            <GlassButton as="a" to="/booking">
-              <span className="inline-flex items-center gap-2">
-                <Phone size={16} /> Book Now
-              </span>
-            </GlassButton>
+           
           </nav>
 
           {/* Mobile menu trigger */}
@@ -342,11 +342,7 @@ export default function HeaderNav() {
                 })}
 
                 <div className="mt-4 px-3">
-                  <GlassButton as="a" to="/booking" onClick={() => setOpen(false)}>
-                    <span className="inline-flex items-center justify-center gap-2">
-                      <Phone size={16} /> Book Now
-                    </span>
-                  </GlassButton>
+                  
                 </div>
               </div>
             </motion.aside>
