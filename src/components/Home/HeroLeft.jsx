@@ -1,6 +1,7 @@
 
 import { MdStart } from "react-icons/md";
 import GlassButton from "./GlassButton";
+import { FiArrowUpRight } from "react-icons/fi";
 
 const HeroLeft = () => {
   return (
@@ -19,12 +20,12 @@ const HeroLeft = () => {
         <GlassButton as="a" to="/fleet" className="w-full sm:w-auto">
           <span className="inline-flex items-center justify-center gap-2 px-2">
             View Fleet
-            <MdStart />
+           <FiArrowUpRight className="size-4 md:size-6"/>
           </span>
         </GlassButton>
       </div>
     </div>
-  );
+  )
 };
 
 export default HeroLeft;
