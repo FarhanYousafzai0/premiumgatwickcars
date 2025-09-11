@@ -98,20 +98,11 @@ export default function HeaderNav() {
         transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
         className="fixed top-0 left-0 z-50 bg-none text-white bg-black   mx-auto  shadow-sm"
       >
-        <div className="w-screen h-12   overflow-hidden px-4  md:px-10 ">
-          <div className="flex items-center justify-between  h-full ">
-            <div className="md:flex hidden items-center h-full">
-              <img
-                src="/Logo.png"
-                loading="lazy"
-                alt="Premium Gatwick Cars Logo"
-                className=" w-auto object-contain"
-                style={{ maxHeight: "12rem" }}
-              />
-            </div>
-           
+        <div className="w-screen h-12    overflow-hidden px-4  md:px-10 ">
+       
+            
 
-           <div className="flex gap-4">
+           <div className="flex gap-4 h-full">
            <div className="flex items-center gap-2  justify-center relative h-full">
            <FaPhone size={12} className="text-white "/>
               <a 
@@ -134,15 +125,22 @@ export default function HeaderNav() {
             </div>
            </div>
           </div>
-        </div>
-        <div className="w-screen mx-auto flex items-center backdrop-blur-2xl justify-between py-2 md:px-10 px-4">
+        
+        <div className="w-screen mx-auto relative flex items-center backdrop-blur-2xl justify-between py-2 md:px-10 px-4">
           {/* Logo */}
           <Link
             to="/"  
             className="flex text-white items-center select-none"
             aria-label="Home"
           >
-           <h1 className="md:text-[1.2rem] ">Premium Gatwick Cars</h1>
+              <img
+                src="/Logo.png"
+                loading="lazy"
+                alt="Premium Gatwick Cars Logo"
+                className=" w-auto object-contain size-45 md:size-55 left-0  absolute"
+                
+              />
+        
 
           </Link>
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, Users, Briefcase, Hand, Car, Phone, User, Calendar, Clock, MapPin, Mail } from 'lucide-react';
+import { ChevronLeft, Users, Car, Phone, User, Calendar, Clock, MapPin, Mail, BriefcaseBusiness, HandFist } from 'lucide-react';
 import GlassButton from "./GlassButton";
 import { locations } from '../../lib/data';
 
@@ -37,6 +37,8 @@ const HeroRight = () => {
     passengers: '',
     luggage: '',
     handLuggage: '',
+    flightNumber: '', // New field
+    instructions: '', // New field
     meetGreet: false
   });
 
@@ -89,12 +91,11 @@ const HeroRight = () => {
   };
 
   const isStep1Complete = () => {
-    // Allow step 1 to be complete if either (from and to) or address is filled
     return (formData.from && formData.to || formData.address) && formData.selectedCar && formData.date && formData.time;
   };
 
   const isStep2Complete = () => {
-    return formData.name && formData.email && formData.phone && formData.passengers && formData.luggage && formData.handLuggage;
+    return formData.name && formData.email && formData.phone && formData.passengers && formData.luggage && formData.handLuggage && formData.flightNumber;
   };
 
   const handleNextStep = () => {
@@ -120,9 +121,9 @@ const HeroRight = () => {
       customer_phone: formData.phone,
       
       // Journey details
-      pickup_location: formData.address ? null : formData.from, // Set to null if address is provided
-      destination: formData.address ? null : formData.to, // Set to null if address is provided
-      custom_address: formData.address || null, // Include custom address if provided
+      pickup_location: formData.address ? null : formData.from,
+      destination: formData.address ? null : formData.to,
+      custom_address: formData.address || null,
       travel_date: formData.date,
       travel_time: formData.time,
       selected_vehicle: formData.selectedCar,
@@ -131,6 +132,8 @@ const HeroRight = () => {
       passenger_count: formData.passengers,
       luggage_count: formData.luggage,
       hand_luggage_count: formData.handLuggage,
+      flight_number: formData.flightNumber, // New field
+      instructions: formData.instructions || 'None', // New field
       meet_greet: formData.meetGreet ? 'Yes' : 'No',
       
       // Additional info
@@ -156,6 +159,8 @@ BOOKING DETAILS:
 Passengers: ${formData.passengers}
 Luggage: ${formData.luggage}
 Hand Luggage: ${formData.handLuggage}
+Flight Number: ${formData.flightNumber}
+Instructions: ${formData.instructions || 'None'}
 Meet & Greet: ${formData.meetGreet ? 'Yes' : 'No'}
 
 Booking submitted on: ${new Date().toLocaleString()}
@@ -202,6 +207,8 @@ Booking submitted on: ${new Date().toLocaleString()}
           passengers: '',
           luggage: '',
           handLuggage: '',
+          flightNumber: '',
+          instructions: '',
           meetGreet: false
         });
         setCurrentStep(1);
@@ -389,16 +396,6 @@ Booking submitted on: ${new Date().toLocaleString()}
                               <Users className="w-3 h-3 mr-1" />
                               {car.passengers}p
                             </span>
-                            <span className="flex items-center">
-                              <Briefcase className="w-3 h-3 mr-1" />
-                              {car.luggage}L
-                            </span>
-                            {car.handLuggage > 0 && (
-                              <span className="flex items-center">
-                                <Hand className="w-3 h-3 mr-1" />
-                                {car.handLuggage}H
-                              </span>
-                            )}
                           </div>
                         </div>
                       ))}
@@ -467,8 +464,8 @@ Booking submitted on: ${new Date().toLocaleString()}
                     </div>
                   </div>
 
-                  {/* Phone */}
-                  <div className="grid grid-cols-1 gap-3">
+                  {/* Phone & Flight Number */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <label className="block text-xs font-medium text-gray-700 mb-1">
                         <Phone className="w-3 h-3 inline mr-1" />
@@ -483,6 +480,33 @@ Booking submitted on: ${new Date().toLocaleString()}
                         required
                       />
                     </div>
+                    <div>
+                      <label className="block text-xs font-medium text-gray-700 mb-1">
+                        Flight Number
+                      </label>
+                      <input
+                        type="text"
+                        value={formData.flightNumber}
+                        onChange={(e) => handleInputChange('flightNumber', e.target.value)}
+                        className="w-full px-2 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-black focus:border-transparent"
+                        placeholder="Enter flight number"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  {/* Instructions */}
+                  <div>
+                    <label className="block text-xs font-medium text-gray-700 mb-1">
+                      Instructions
+                    </label>
+                    <textarea
+                      value={formData.instructions}
+                      onChange={(e) => handleInputChange('instructions', e.target.value)}
+                      className="w-full px-2 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-black focus:border-transparent"
+                      placeholder="Enter any special instructions"
+                      rows="4"
+                    />
                   </div>
 
                   {/* Passengers, Luggage, Hand Luggage */}
@@ -507,7 +531,7 @@ Booking submitted on: ${new Date().toLocaleString()}
 
                     <div>
                       <label className="block text-xs font-medium text-gray-700 mb-1">
-                        <Briefcase className="w-3 h-3 inline mr-1" />
+                        <BriefcaseBusiness className="w-3 h-3 inline mr-1" />
                         Luggage
                       </label>
                       <select 
@@ -525,7 +549,7 @@ Booking submitted on: ${new Date().toLocaleString()}
 
                     <div>
                       <label className="block text-xs font-medium text-gray-700 mb-1">
-                        <Hand className="w-3 h-3 inline mr-1" />
+                        <HandFist className="w-3 h-3 inline mr-1" />
                         Hand Luggage
                       </label>
                       <select 
