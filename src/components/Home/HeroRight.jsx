@@ -29,11 +29,11 @@ const HeroRight = () => {
     selectedCar: '',
     date: '',
     time: '',
+    address: '',
     // Step 2
     name: '',
     email: '',
     phone: '',
-    address: '',
     passengers: '',
     luggage: '',
     handLuggage: '',
@@ -89,11 +89,12 @@ const HeroRight = () => {
   };
 
   const isStep1Complete = () => {
-    return formData.from && formData.to && formData.selectedCar && formData.date && formData.time;
+    // Allow step 1 to be complete if either (from and to) or address is filled
+    return (formData.from && formData.to || formData.address) && formData.selectedCar && formData.date && formData.time;
   };
 
   const isStep2Complete = () => {
-    return formData.name && formData.email && formData.phone && formData.address && formData.passengers && formData.luggage && formData.handLuggage;
+    return formData.name && formData.email && formData.phone && formData.passengers && formData.luggage && formData.handLuggage;
   };
 
   const handleNextStep = () => {
@@ -111,17 +112,17 @@ const HeroRight = () => {
       throw new Error('Email.js not loaded');
     }
 
-    // Template parameters that will be sent to your email template
+    // Template parameters for Email.js
     const templateParams = {
       // Customer information
       customer_name: formData.name,
       customer_email: formData.email,
       customer_phone: formData.phone,
-      customer_address: formData.address,
       
       // Journey details
-      pickup_location: formData.from,
-      destination: formData.to,
+      pickup_location: formData.address ? null : formData.from, // Set to null if address is provided
+      destination: formData.address ? null : formData.to, // Set to null if address is provided
+      custom_address: formData.address || null, // Include custom address if provided
       travel_date: formData.date,
       travel_time: formData.time,
       selected_vehicle: formData.selectedCar,
@@ -144,11 +145,9 @@ CUSTOMER INFORMATION:
 Name: ${formData.name}
 Email: ${formData.email}
 Phone: ${formData.phone}
-Address: ${formData.address}
 
 JOURNEY DETAILS:
-From: ${formData.from}
-To: ${formData.to}
+${formData.address ? `Custom Address: ${formData.address}` : `From: ${formData.from}\nTo: ${formData.to}`}
 Date: ${formData.date}
 Time: ${formData.time}
 Vehicle: ${formData.selectedCar}
@@ -196,10 +195,10 @@ Booking submitted on: ${new Date().toLocaleString()}
           selectedCar: '',
           date: '',
           time: '',
+          address: '',
           name: '',
           email: '',
           phone: '',
-          address: '',
           passengers: '',
           luggage: '',
           handLuggage: '',
@@ -222,22 +221,40 @@ Booking submitted on: ${new Date().toLocaleString()}
       <div className="w-full max-w-md lg:max-w-lg xl:max-w-xl">
         {/* Success/Error Messages */}
         {submitStatus && (
-          <div className={`mb-4 p-3 rounded-lg text-sm ${
-            submitStatus === 'success' 
-              ? 'bg-green-100 text-green-800 border border-green-200' 
-              : 'bg-red-100 text-red-800 border border-red-200'
-          }`}>
-            {submitStatus === 'success' ? (
-              <div>
-                <h3 className="font-semibold">Booking Submitted Successfully! ✅</h3>
-                <p className="text-xs mt-1">Thank you for your booking. We will contact you shortly to confirm your reservation.</p>
-              </div>
-            ) : (
-              <div>
-                <h3 className="font-semibold">Booking Failed ❌</h3>
-                <p className="text-xs mt-1">Sorry, there was an error submitting your booking. Please try again or contact us directly.</p>
-              </div>
-            )}
+          <div
+            className={`mb-4 flex items-center gap-3 p-4 rounded-xl text-sm shadow-md transition-all duration-300 ${
+              submitStatus === 'success'
+                ? 'bg-green-50 text-green-700 border border-green-200'
+                : 'bg-red-50 text-red-700 border border-red-200'
+            }`}
+            role="alert"
+            aria-live="polite"
+          >
+            <div className="flex-shrink-0">
+              {submitStatus === 'success' ? (
+                <svg className="w-6 h-6 text-green-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none"/>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8 12l2.5 2.5L16 9" />
+                </svg>
+              ) : (
+                <svg className="w-6 h-6 text-red-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none"/>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 9l-6 6m0-6l6 6" />
+                </svg>
+              )}
+            </div>
+            <div>
+              <h3 className="font-semibold">
+                {submitStatus === 'success'
+                  ? 'Booking Submitted Successfully!'
+                  : 'Booking Failed'}
+              </h3>
+              <p className="text-xs mt-1">
+                {submitStatus === 'success'
+                  ? 'Thank you for your booking. We will contact you shortly to confirm your reservation.'
+                  : 'Sorry, there was an error submitting your booking. Please try again or contact us directly.'}
+              </p>
+            </div>
           </div>
         )}
 
@@ -264,7 +281,6 @@ Booking submitted on: ${new Date().toLocaleString()}
                         value={formData.from}
                         onChange={(e) => handleInputChange('from', e.target.value)}
                         className="w-full px-2 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-black focus:border-transparent"
-                        required
                       >
                         <option value="">Select pickup</option>
                         {locations.map(location => (
@@ -282,7 +298,6 @@ Booking submitted on: ${new Date().toLocaleString()}
                         value={formData.to}
                         onChange={(e) => handleInputChange('to', e.target.value)}
                         className="w-full px-2 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-black focus:border-transparent"
-                        required
                       >
                         <option value="">Select destination</option>
                         {locations.map(location => (
@@ -290,6 +305,21 @@ Booking submitted on: ${new Date().toLocaleString()}
                         ))}
                       </select>
                     </div>
+                  </div>
+
+                  {/* Other Address */}
+                  <div>
+                    <label className="block text-xs font-medium text-gray-700 mb-1">
+                      <MapPin className="w-3 h-3 inline mr-1" />
+                      Other Address
+                    </label>
+                    <input
+                      type="text"
+                      value={formData.address}
+                      onChange={(e) => handleInputChange('address', e.target.value)}
+                      className="w-full px-2 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-black focus:border-transparent"
+                      placeholder="Enter custom address (if not in dropdown)"
+                    />
                   </div>
 
                   {/* Date & Time */}
@@ -390,7 +420,7 @@ Booking submitted on: ${new Date().toLocaleString()}
             </div>
 
             {/* Step 2 */}
-            <div className="w-full flex-shrink-0 ">
+            <div className="w-full flex-shrink-0">
               <div className="bg-white/95 backdrop-blur-sm rounded-lg p-4 sm:p-6 mb-4">
                 <div className="flex items-center mb-4">
                   <GlassButton
@@ -437,8 +467,8 @@ Booking submitted on: ${new Date().toLocaleString()}
                     </div>
                   </div>
 
-                  {/* Phone & Address */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {/* Phone */}
+                  <div className="grid grid-cols-1 gap-3">
                     <div>
                       <label className="block text-xs font-medium text-gray-700 mb-1">
                         <Phone className="w-3 h-3 inline mr-1" />
@@ -450,21 +480,6 @@ Booking submitted on: ${new Date().toLocaleString()}
                         onChange={(e) => handleInputChange('phone', e.target.value)}
                         className="w-full px-2 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-black focus:border-transparent"
                         placeholder="Enter phone number"
-                        required
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-medium text-gray-700 mb-1">
-                        <MapPin className="w-3 h-3 inline mr-1" />
-                        Address
-                      </label>
-                      <input
-                        type="text"
-                        value={formData.address}
-                        onChange={(e) => handleInputChange('address', e.target.value)}
-                        className="w-full px-2 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-black focus:border-transparent"
-                        placeholder="Enter your address"
                         required
                       />
                     </div>

@@ -142,7 +142,7 @@ export default function HeaderNav() {
             className="flex text-white items-center select-none"
             aria-label="Home"
           >
-           <h1 className="text-1xl">Premium Gatwick Cars</h1>
+           <h1 className="md:text-[1.2rem] ">Premium Gatwick Cars</h1>
 
           </Link>
 

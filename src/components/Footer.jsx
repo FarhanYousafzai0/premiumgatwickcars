@@ -9,10 +9,7 @@ const Footer = () => {
         <div>
           <h2 className="text-xl font-bold text-black mb-2">Premium Gatwick Cars</h2>
           <p className="text-gray-700 text-sm">
-            Your trusted partner for airport transfers, business travel, weddings, tours, 
-            and special events. With licensed drivers, clean vehicles, and transparent pricing, 
-            <span className="font-semibold text-black"> Premium Gatwick Cars</span> makes every journey 
-            reliable, comfortable, and stress-free.
+          Your trusted choice for airport transfers, business travel, weddings, tours, and events. Licensed drivers, clean vehicles, transparent pricing—reliable, comfortable, stress-free journeys.
           </p>
         </div>
 
