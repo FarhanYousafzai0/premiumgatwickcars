@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, Users, Car, Phone, User, Calendar, Clock, MapPin, Mail, BriefcaseBusiness, HandFist } from 'lucide-react';
+import { ChevronLeft, Users, Car, Phone, User, Calendar, Clock, MapPin, Mail, Briefcase } from 'lucide-react';
 import GlassButton from "./GlassButton";
 import { locations } from '../../lib/data';
 
-// Email.js configuration - Replace these with your actual values
 const EMAILJS_CONFIG = {
-  serviceId: 'service_u6442nk', // Replace with your Email.js service ID
-  templateId: 'template_ggre88n', // Replace with your Email.js template ID
-  publicKey: '6Mp9lqUto7ix4_I3O' // Replace with your Email.js public key
+  serviceId: 'service_puy75p8',
+  templateId: 'template_llu8d9j',
+  publicKey: '0uzjBXeISlZikn9Mw'
 };
 
 const timeSlots = [
@@ -21,24 +20,22 @@ const timeSlots = [
 const HeroRight = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null); // 'success' or 'error'
+  const [submitStatus, setSubmitStatus] = useState(null);
   const [formData, setFormData] = useState({
-    // Step 1
     from: '',
     to: '',
     selectedCar: '',
     date: '',
     time: '',
     address: '',
-    // Step 2
     name: '',
     email: '',
     phone: '',
     passengers: '',
     luggage: '',
     handLuggage: '',
-    flightNumber: '', // New field
-    instructions: '', // New field
+    flightNumber: '',
+    instructions: '',
     meetGreet: false
   });
 
@@ -66,7 +63,6 @@ const HeroRight = () => {
     }
   ];
 
-  // Load Email.js script
   useEffect(() => {
     const script = document.createElement('script');
     script.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js';
@@ -79,7 +75,9 @@ const HeroRight = () => {
     document.head.appendChild(script);
 
     return () => {
-      document.head.removeChild(script);
+      if (document.head.contains(script)) {
+        document.head.removeChild(script);
+      }
     };
   }, []);
 
@@ -110,39 +108,32 @@ const HeroRight = () => {
 
   const sendEmail = async () => {
     if (!window.emailjs) {
+      console.error('Email.js not loaded');
       throw new Error('Email.js not loaded');
     }
 
-    // Template parameters for Email.js
+    // Fixed template parameters to match email template exactly
     const templateParams = {
-      // Customer information
       customer_name: formData.name,
       customer_email: formData.email,
       customer_phone: formData.phone,
-      
-      // Journey details
-      pickup_location: formData.address ? null : formData.from,
-      destination: formData.address ? null : formData.to,
-      custom_address: formData.address || null,
+      pickup_location: formData.from,
+      destination: formData.to,
+      custom_address: formData.address,
       travel_date: formData.date,
       travel_time: formData.time,
       selected_vehicle: formData.selectedCar,
-      
-      // Booking details
       passenger_count: formData.passengers,
       luggage_count: formData.luggage,
       hand_luggage_count: formData.handLuggage,
-      flight_number: formData.flightNumber, // New field
-      instructions: formData.instructions || 'None', // New field
+      flight_number: formData.flightNumber,
+      instructions: formData.instructions || 'None',
       meet_greet: formData.meetGreet ? 'Yes' : 'No',
-      
-      // Additional info
       booking_date: new Date().toLocaleDateString(),
       booking_time: new Date().toLocaleTimeString(),
-      
-      // Formatted message for email body
+      // Additional message field for backup
       message: `
-New Booking Request
+New Booking Request - Premium Gatwick Cars
 
 CUSTOMER INFORMATION:
 Name: ${formData.name}
@@ -164,8 +155,10 @@ Instructions: ${formData.instructions || 'None'}
 Meet & Greet: ${formData.meetGreet ? 'Yes' : 'No'}
 
 Booking submitted on: ${new Date().toLocaleString()}
-      `
+      `.trim()
     };
+
+    console.log('Sending templateParams:', templateParams);
 
     try {
       const response = await window.emailjs.send(
@@ -173,7 +166,6 @@ Booking submitted on: ${new Date().toLocaleString()}
         EMAILJS_CONFIG.templateId,
         templateParams
       );
-      
       console.log('Email sent successfully:', response);
       return response;
     } catch (error) {
@@ -191,8 +183,6 @@ Booking submitted on: ${new Date().toLocaleString()}
     try {
       await sendEmail();
       setSubmitStatus('success');
-      
-      // Reset form after successful submission
       setTimeout(() => {
         setFormData({
           from: '',
@@ -214,7 +204,6 @@ Booking submitted on: ${new Date().toLocaleString()}
         setCurrentStep(1);
         setSubmitStatus(null);
       }, 3000);
-      
     } catch (error) {
       setSubmitStatus('error');
       console.error('Booking submission failed:', error);
@@ -226,7 +215,6 @@ Booking submitted on: ${new Date().toLocaleString()}
   return (
     <div className="z-10 flex items-center justify-center mt-8 lg:mt-20">
       <div className="w-full max-w-md lg:max-w-lg xl:max-w-xl">
-        {/* Success/Error Messages */}
         {submitStatus && (
           <div
             className={`mb-4 flex items-center gap-3 p-4 rounded-xl text-sm shadow-md transition-all duration-300 ${
@@ -265,19 +253,17 @@ Booking submitted on: ${new Date().toLocaleString()}
           </div>
         )}
 
-        {/* Form Container */}
         <div className="relative overflow-hidden">
           <div 
             className="flex transition-transform duration-500 ease-in-out"
             style={{ transform: `translateX(-${(currentStep - 1) * 100}%)` }}
           >
-            {/* Step 1 */}
+            {/* Step 1: Journey Details */}
             <div className="w-full flex-shrink-0">
               <div className="bg-white/95 backdrop-blur-sm rounded-lg p-4 sm:p-6 mb-4">
                 <h3 className="text-lg font-semibold mb-4 text-gray-900">Journey Details</h3>
                 
                 <div className="space-y-3">
-                  {/* From & To */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <label className="block text-xs font-medium text-gray-700 mb-1">
@@ -290,7 +276,7 @@ Booking submitted on: ${new Date().toLocaleString()}
                         className="w-full px-2 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-black focus:border-transparent"
                       >
                         <option value="">Select pickup</option>
-                        {locations.map(location => (
+                        {locations?.map(location => (
                           <option key={location} value={location}>{location}</option>
                         ))}
                       </select>
@@ -307,14 +293,13 @@ Booking submitted on: ${new Date().toLocaleString()}
                         className="w-full px-2 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-black focus:border-transparent"
                       >
                         <option value="">Select destination</option>
-                        {locations.map(location => (
+                        {locations?.map(location => (
                           <option key={location} value={location}>{location}</option>
                         ))}
                       </select>
                     </div>
                   </div>
 
-                  {/* Other Address */}
                   <div>
                     <label className="block text-xs font-medium text-gray-700 mb-1">
                       <MapPin className="w-3 h-3 inline mr-1" />
@@ -329,7 +314,6 @@ Booking submitted on: ${new Date().toLocaleString()}
                     />
                   </div>
 
-                  {/* Date & Time */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <label className="block text-xs font-medium text-gray-700 mb-1">
@@ -365,7 +349,6 @@ Booking submitted on: ${new Date().toLocaleString()}
                     </div>
                   </div>
 
-                  {/* Car Selection */}
                   <div>
                     <label className="block text-xs font-medium text-gray-700 mb-2">
                       <Car className="w-3 h-3 inline mr-1" />
@@ -402,7 +385,6 @@ Booking submitted on: ${new Date().toLocaleString()}
                     </div>
                   </div>
 
-                  {/* Next Button */}
                   <div className="flex justify-end pt-2">
                     <GlassButton
                       className="cursor-pointer text-sm px-4 py-2"
@@ -416,7 +398,7 @@ Booking submitted on: ${new Date().toLocaleString()}
               </div>
             </div>
 
-            {/* Step 2 */}
+            {/* Step 2: Personal Details */}
             <div className="w-full flex-shrink-0">
               <div className="bg-white/95 backdrop-blur-sm rounded-lg p-4 sm:p-6 mb-4">
                 <div className="flex items-center mb-4">
@@ -431,7 +413,6 @@ Booking submitted on: ${new Date().toLocaleString()}
                 </div>
                 
                 <div className="space-y-3">
-                  {/* Name & Email */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <label className="block text-xs font-medium text-gray-700 mb-1">
@@ -464,7 +445,6 @@ Booking submitted on: ${new Date().toLocaleString()}
                     </div>
                   </div>
 
-                  {/* Phone & Flight Number */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <label className="block text-xs font-medium text-gray-700 mb-1">
@@ -495,21 +475,19 @@ Booking submitted on: ${new Date().toLocaleString()}
                     </div>
                   </div>
 
-                  {/* Instructions */}
                   <div>
                     <label className="block text-xs font-medium text-gray-700 mb-1">
-                      Instructions
+                      Instructions (Optional)
                     </label>
                     <textarea
                       value={formData.instructions}
                       onChange={(e) => handleInputChange('instructions', e.target.value)}
                       className="w-full px-2 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-black focus:border-transparent"
-                      placeholder="Enter any special instructions"
+                      placeholder="Enter any special instructions (optional)"
                       rows="4"
                     />
                   </div>
 
-                  {/* Passengers, Luggage, Hand Luggage */}
                   <div className="grid grid-cols-3 gap-2">
                     <div>
                       <label className="block text-xs font-medium text-gray-700 mb-1">
@@ -531,7 +509,7 @@ Booking submitted on: ${new Date().toLocaleString()}
 
                     <div>
                       <label className="block text-xs font-medium text-gray-700 mb-1">
-                        <BriefcaseBusiness className="w-3 h-3 inline mr-1" />
+                        <Briefcase className="w-3 h-3 inline mr-1" />
                         Luggage
                       </label>
                       <select 
@@ -549,8 +527,7 @@ Booking submitted on: ${new Date().toLocaleString()}
 
                     <div>
                       <label className="block text-xs font-medium text-gray-700 mb-1">
-                        <HandFist className="w-3 h-3 inline mr-1" />
-                        Hand Luggage
+                        📝 Hand Luggage
                       </label>
                       <select 
                         value={formData.handLuggage}
@@ -566,7 +543,6 @@ Booking submitted on: ${new Date().toLocaleString()}
                     </div>
                   </div>
 
-                  {/* Meet & Greet */}
                   <div>
                     <label className="flex items-center">
                       <input
@@ -579,7 +555,6 @@ Booking submitted on: ${new Date().toLocaleString()}
                     </label>
                   </div>
 
-                  {/* Submit Button */}
                   <div className="flex justify-end pt-2">
                     <GlassButton
                       onClick={handleSubmit}
