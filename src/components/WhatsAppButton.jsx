@@ -11,8 +11,8 @@ const WhatsAppButton = ({ phoneNumber = "+44 7817 202511", message = "Hello! I'd
   // WhatsApp Icon SVG
   const WhatsAppIcon = () => (
     <svg
-      width="28"
-      height="28"
+      width="25"
+      height="25"
       viewBox="0 0 24 24"
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"

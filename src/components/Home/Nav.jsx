@@ -107,7 +107,7 @@ export default function HeaderNav() {
            <FaPhone size={12} className="text-white "/>
               <a 
                 href="tel:+01293 310098"
-                className="text-nowrap py-1 hover:underline hover:scale-102   rounded-md text-xs text-white transition"
+                className="text-nowrap py-1    rounded-md text-xs text-white transition"
               >
                01293 310098
 
